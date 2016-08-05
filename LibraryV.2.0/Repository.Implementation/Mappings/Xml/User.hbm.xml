@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Domain.Model" namespace="Domain.Model">
+  <class name="Book">
+    <id name="Id" generator="hilo" />
+    <property name="Name" />
+    <property name="PublicationDate" />
+    <property name="Description" />
+    <property name="Status" />
+  </class>
+</hibernate-mapping>
