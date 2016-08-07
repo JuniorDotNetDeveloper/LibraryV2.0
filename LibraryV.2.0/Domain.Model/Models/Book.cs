@@ -6,14 +6,16 @@ namespace Domain.Model.Models
 {
     public enum BookStatus : byte { Busy, Free }
 
-    public class Book
+    public class Book : Entity 
     {
         public virtual string Name { get; protected set; }
         public virtual DateTime PublicationDate { get; protected set; }
         public virtual string Description { get; set; }
         public virtual BookStatus Status { get; set; } = BookStatus.Free;
         public virtual IList<Author> Authors { get; protected set; }
-
+        public virtual IList<string> Tags { get; set; }
+        public virtual IList<Comment> Comments{ get; }
+        public virtual Rating Rating { get; set; }
         public virtual int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
 
         [Obsolete]

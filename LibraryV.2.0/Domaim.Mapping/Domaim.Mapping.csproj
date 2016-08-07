@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21B577B1-7243-4AAD-899E-62705397317C}</ProjectGuid>
+    <ProjectGuid>{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repository.Abstraction</RootNamespace>
-    <AssemblyName>Repository.Abstraction</AssemblyName>
+    <RootNamespace>Domaim.Mapping</RootNamespace>
+    <AssemblyName>Domaim.Mapping</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,15 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IBookRepository.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="AuthorMap.cs" />
+    <Compile Include="BookMap.cs" />
+    <Compile Include="EntityMap.cs" />
+    <Compile Include="OrderDetailsMap.cs" />
+    <Compile Include="OrderMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
       <Project>{10375f1b-d8d8-4932-a018-c9c985c497ea}</Project>
       <Name>Domain.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

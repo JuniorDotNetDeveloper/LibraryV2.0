@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryV.2.0", "LibraryV.2.0\LibraryV.2.0.csproj", "{B06C2628-CF66-409B-A541-38D8AEF86CC0}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6431AA31-EB8A-4863-B21A-E58E2633DD93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.UnitTest", "Library.UnitTest\Library.UnitTest.csproj", "{F2DB7492-003B-4FA8-8010-A08100B98BC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domaim.Mapping", "Domaim.Mapping\Domaim.Mapping.csproj", "{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F2DB7492-003B-4FA8-8010-A08100B98BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2DB7492-003B-4FA8-8010-A08100B98BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2DB7492-003B-4FA8-8010-A08100B98BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
