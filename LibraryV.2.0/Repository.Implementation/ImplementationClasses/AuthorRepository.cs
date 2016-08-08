@@ -1,8 +1,9 @@
-﻿using Repository.Abstraction.Interfaces;
+﻿using Domain.Model.Models;
+using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
 {
-    internal class AuthorRepository : Repository, IAuthorRepository
+    public class AuthorRepository : Repository<Author>, IAuthorRepository
     { 
 
     }

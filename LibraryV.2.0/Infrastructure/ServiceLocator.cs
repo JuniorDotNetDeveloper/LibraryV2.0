@@ -13,7 +13,8 @@ namespace Infrastructure
         public static void RegisterAll()
         {
             _kernel.Bind<IBookRepository>().To<BookRepository>();
-            //_kernel.Bind<IRepository<Author>>().To<AuthorRepository>();
+            _kernel.Bind<IAuthorRepository>().To<AuthorRepository>();
+            _kernel.Bind<IUserRepository>().To<UserRepository>();
         }
 
 

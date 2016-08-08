@@ -7,23 +7,23 @@ using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
 {
-    public abstract class Repository : IRepository<Entity>
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         protected readonly ISession _session = SessionGenerator.Instance.GetSession();
 
         public IEnumerable Collection { get; }
 
-        public void Create(Entity entity)
+        public void Create(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Entity entity) 
+        public void Delete(TEntity entity) 
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Entity entity)
+        public void Save(TEntity entity)
         {
             using (ITransaction transaction = _session.BeginTransaction())
             {
@@ -32,12 +32,12 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
-        public Entity GetById(int id)
+        public TEntity GetById(int id)
         {
-            return _session.Get<Entity>(id);
+            return _session.Get<TEntity>(id);
         }
 
-        public void Update(Entity entity)
+        public void Update(TEntity entity)
         {
             using (ITransaction transaction = _session.BeginTransaction())
             {

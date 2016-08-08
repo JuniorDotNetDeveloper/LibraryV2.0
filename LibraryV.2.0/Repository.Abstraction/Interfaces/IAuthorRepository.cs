@@ -1,6 +1,8 @@
-﻿namespace Repository.Abstraction.Interfaces
+﻿using Domain.Model.Models;
+
+namespace Repository.Abstraction.Interfaces
 {
-    public interface IAuthorRepository
+    public interface IAuthorRepository : IRepository<Author>
     {
     }
 }

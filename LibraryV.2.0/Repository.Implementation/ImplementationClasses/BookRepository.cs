@@ -4,7 +4,7 @@ using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
 {
-    internal class BookRepository : Repository, IBookRepository
+    public class BookRepository : Repository<Book>, IBookRepository
     {
         public void ModifyBook(Book book)
         {
@@ -18,6 +18,6 @@ namespace Repository.Implementation.ImplementationClasses
                 _session.Save(book);
                 transaction.Commit();
             }
-        }
+        } 
     }
 }
