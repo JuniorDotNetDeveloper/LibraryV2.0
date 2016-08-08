@@ -43,6 +43,7 @@
     <Compile Include="Interfaces\IAuthorRepository.cs" />
     <Compile Include="Interfaces\IBookRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -55,6 +55,7 @@
     <Compile Include="ImplementationClasses\AuthorRepository.cs" />
     <Compile Include="ImplementationClasses\BookRepository.cs" />
     <Compile Include="ImplementationClasses\Repository.cs" />
+    <Compile Include="ImplementationClasses\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionGenerator.cs" />
   </ItemGroup>
