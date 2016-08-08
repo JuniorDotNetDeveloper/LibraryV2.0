@@ -1,4 +1,5 @@
-﻿using Domain.Model.Models;
+﻿using System.Collections;
+using Domain.Model.Models;
 using System.Collections.Generic;
 
 namespace Repository.Abstraction.Interfaces
@@ -6,11 +7,11 @@ namespace Repository.Abstraction.Interfaces
     public interface IRepository<TEntity>
         where TEntity : Entity
     {
-        IEnumerable<TEntity> Collection { get; }
-        void Create<TEntity>(TEntity entity) ;
-        void Update<TEntity>(TEntity entity);
-        void Delete<TEntity>(TEntity entity);
-        void Save<TEntity>(TEntity entity);
-        TEntity FindById(int id);
+        IEnumerable Collection { get; }
+        void Create(TEntity entity) ;
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
+        void Save(TEntity entity);
+        TEntity GetById(int id);
     }
 }

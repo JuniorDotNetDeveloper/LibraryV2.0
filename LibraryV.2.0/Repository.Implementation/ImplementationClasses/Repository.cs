@@ -32,7 +32,7 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
-        public Entity FindById(int id)
+        public Entity GetById(int id)
         {
             return _session.Get<Entity>(id);
         }
