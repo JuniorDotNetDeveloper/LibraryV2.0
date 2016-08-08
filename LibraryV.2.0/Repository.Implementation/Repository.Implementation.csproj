@@ -52,10 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImplementationClasses\AuthorRepository.cs" />
+    <Compile Include="ImplementationClasses\BookRepository.cs" />
+    <Compile Include="ImplementationClasses\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domaim.Mapping\Domaim.Mapping.csproj">
+      <Project>{1BC9BB77-481C-4A97-AD6E-CC8ED7D6D58B}</Project>
+      <Name>Domaim.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{10375f1b-d8d8-4932-a018-c9c985c497ea}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository.Abstraction\Repository.Abstraction.csproj">
       <Project>{21b577b1-7243-4aad-899e-62705397317c}</Project>
       <Name>Repository.Abstraction</Name>

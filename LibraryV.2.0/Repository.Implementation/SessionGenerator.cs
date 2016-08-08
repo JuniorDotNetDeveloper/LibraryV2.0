@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Cfg;
+﻿using Domaim.Mapping;
+using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
@@ -7,7 +8,7 @@ namespace Repository.Implementation
 {
     public class SessionGenerator
     {
-        #region Public members
+
 
         public ISession GetSession()
         {
@@ -19,9 +20,6 @@ namespace Repository.Implementation
             get { return _sessionGenerator; }
         }
 
-        #endregion
-
-        #region Non-public static members
 
         private static ISessionFactory CreateSessionFactory()
         {
@@ -44,9 +42,8 @@ namespace Repository.Implementation
             return configuration.BuildSessionFactory();
         }
 
-        #endregion
 
-        #region Non-public members
+      
 
         private SessionGenerator()
         {
@@ -55,6 +52,5 @@ namespace Repository.Implementation
         private static readonly SessionGenerator _sessionGenerator = new SessionGenerator();
         private static readonly ISessionFactory SessionFactory = CreateSessionFactory();
 
-        #endregion
     }
 }

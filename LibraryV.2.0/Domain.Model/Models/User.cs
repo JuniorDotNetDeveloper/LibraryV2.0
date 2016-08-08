@@ -30,6 +30,7 @@ namespace Domain.Model.Models
             TelephoneNumber = telephoneNumner;
         }
 
+        [Obsolete]
         protected User() { }
 
         public virtual void TakeTheBook(Book book)

@@ -12,10 +12,8 @@
             Map(x => x.Status).Not.Nullable();
             Map(x => x.Rating);
 
-            HasMany(x => x.Comments).Inverse();
-            HasMany(x => x.Authors).Cascade.SaveUpdate().Inverse().ForeignKeyCascadeOnDelete();
-            References(x => x.Authors).Not.Nullable();
-            HasMany(x => x.Tags).Inverse();
+            HasMany(x => x.Comments).AsList().Inverse();
+            HasMany(x => x.Tags).Inverse().AsSet();
         }
     }
 }

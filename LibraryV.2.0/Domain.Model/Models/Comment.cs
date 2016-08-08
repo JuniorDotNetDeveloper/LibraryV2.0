@@ -9,6 +9,7 @@ namespace Domain.Model.Models
         public virtual string Commentary{ get; set; }
         public virtual DateTime CommetDate { get; } = DateTime.Now;
 
+        [Obsolete]
         protected Comment()  { }
 
         public Comment(long userId, long bookId, string commentary)

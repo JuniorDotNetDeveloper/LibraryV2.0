@@ -10,7 +10,7 @@ namespace Domain.Model.Models
         public virtual IList<Book> PersonalBooks { get; } = new List<Book>();
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
-
+        [Obsolete]
         protected Author() { }
         public Author(string firstName, string lastName, IList<Book> personalBooks = null)
         {

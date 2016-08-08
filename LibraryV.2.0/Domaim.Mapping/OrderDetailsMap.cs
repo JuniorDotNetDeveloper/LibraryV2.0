@@ -1,9 +1,4 @@
 ﻿using Domain.Model.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domaim.Mapping
 {
@@ -11,7 +6,10 @@ namespace Domaim.Mapping
     {
         public OrderDetailsMap()
         {
-            Map(x => x.OrderId).Not.Nullable();
+            References(x => x.Order).Not.Nullable();
+            References(x => x.Book).Not.Nullable();
+
+            Map(x => x.EndDate).Not.Nullable();
         }
     }
 }

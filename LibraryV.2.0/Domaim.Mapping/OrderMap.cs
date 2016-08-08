@@ -6,8 +6,8 @@ namespace Domaim.Mapping
     {
         public OrderMap()
         {
-            Map(x => x.User).Not.Nullable();
-            Map(x=>x.
+            References(x => x.User).Not.Nullable();
+            Map(x => x.OrderDate).Not.Nullable();
         }
     }
 }
