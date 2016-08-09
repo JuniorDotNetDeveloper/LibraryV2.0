@@ -8,7 +8,6 @@ namespace Repository.Abstraction.Interfaces
         where TEntity : Entity
     {
         IEnumerable Collection { get; }
-        void Create(TEntity entity) ;
         void Update(TEntity entity);
         void Delete(TEntity entity);
         void Save(TEntity entity);

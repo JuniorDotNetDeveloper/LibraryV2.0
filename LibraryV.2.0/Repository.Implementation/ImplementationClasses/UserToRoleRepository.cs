@@ -6,9 +6,5 @@ namespace Repository.Implementation.ImplementationClasses
 {
     public class UserToRoleRepository : Repository<UserToRole>, IUserToRoleRepository
     {
-        public override void Create(UserToRole entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

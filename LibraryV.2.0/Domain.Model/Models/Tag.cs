@@ -4,7 +4,7 @@ namespace Domain.Model.Models
 {
     public class Tag : Entity
     {
-        public virtual string Tags { get; set; }
+        public virtual string TagName { get; set; }
 
         [Obsolete]
         protected Tag() {}

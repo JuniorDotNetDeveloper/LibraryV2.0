@@ -6,7 +6,7 @@ namespace Domaim.Mapping
     {
         public TagMap()
         {
-            Map(x => x.Tags).Not.Nullable().Unique();
+            Map(x => x.TagName).Not.Nullable().UniqueKey("TagName");
         }
     }
 }

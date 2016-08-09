@@ -6,7 +6,7 @@ namespace Domaim.Mapping
     {
         public BookCategoryMap()
         {
-            Map(x => x.CategoryName).Not.Nullable().Unique();
+            Map(x => x.CategoryName).Not.Nullable().UniqueKey("UQ_CategoryName");
             Map(x => x.Description);
         }
     }
