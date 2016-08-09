@@ -1,4 +1,5 @@
-﻿using Domaim.Mapping;
+﻿using System.Reflection;
+using Domaim.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -32,9 +33,7 @@ namespace Repository.Implementation
                                                                                                .Server(
                                                                                                    @"MDDSK40046")
                                                                                                .TrustedConnection()))
-                                                        .Mappings(
-                                                            x =>
-                                                            x.FluentMappings.AddFromAssembly(typeof(EntityMap<>).Assembly))
+                                                        .Mappings(CreateMappingConfiguration)
                                                         .ExposeConfiguration(
                                                             cfg => new SchemaUpdate(cfg).Execute(false, true));
 
@@ -42,8 +41,14 @@ namespace Repository.Implementation
             return configuration.BuildSessionFactory();
         }
 
+        private static void CreateMappingConfiguration(MappingConfiguration mappingConfiguration)
+        {
+            Assembly assembly = typeof(EntityMap<>).Assembly;
+            mappingConfiguration.FluentMappings.AddFromAssembly(assembly);
+            mappingConfiguration.HbmMappings.AddFromAssembly(assembly);
 
-      
+        }
+
 
         private SessionGenerator()
         {

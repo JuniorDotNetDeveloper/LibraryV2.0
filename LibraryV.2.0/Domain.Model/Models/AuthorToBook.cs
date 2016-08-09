@@ -9,5 +9,11 @@ namespace Domain.Model.Models
 
         [Obsolete]
         protected AuthorToBook() { }
+
+        public AuthorToBook(Book book, Author author)
+        {
+            Book = book;
+            Author = author;
+        }
     }
 }

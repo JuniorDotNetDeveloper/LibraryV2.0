@@ -3,9 +3,9 @@ using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
 {
-    public class AuthorRepository : Repository<Author>, IAuthorRepository
+    public class AuthorToBookRepository : Repository<AuthorToBook>, IAuthorToBookRepository
     {
-        public override void Create(Author entity)
+        public override void Create(AuthorToBook entity)
         {
             throw new System.NotImplementedException();
         }

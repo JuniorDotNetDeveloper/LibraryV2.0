@@ -13,14 +13,15 @@ namespace Repository.Implementation.ImplementationClasses
 
         public IEnumerable Collection { get; }
 
-        public void Create(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Create(TEntity entity);
 
         public void Delete(TEntity entity) 
         {
-            throw new NotImplementedException();
+            using (ITransaction transaction = _session.BeginTransaction())
+            {
+                _session.Delete(entity);
+                transaction.Commit();
+            }
         }
 
         public void Save(TEntity entity)

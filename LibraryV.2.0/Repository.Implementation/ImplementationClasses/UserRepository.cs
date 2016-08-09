@@ -19,5 +19,14 @@ namespace Repository.Implementation.ImplementationClasses
         //                    join [Order] o on od.OrderId = o.Id
 	       //                 where od.EndDate > Getdate() and o.UserId = Id";
         //}
+        public IList<Book> GetCurrentBooks()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Create(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

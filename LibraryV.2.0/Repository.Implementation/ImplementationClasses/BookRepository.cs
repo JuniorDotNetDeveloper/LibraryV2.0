@@ -18,6 +18,11 @@ namespace Repository.Implementation.ImplementationClasses
                 _session.Save(book);
                 transaction.Commit();
             }
-        } 
+        }
+
+        public override void Create(Book entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

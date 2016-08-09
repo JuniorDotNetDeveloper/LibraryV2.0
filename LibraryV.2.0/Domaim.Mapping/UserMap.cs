@@ -12,7 +12,7 @@ namespace Domaim.Mapping
             Map(x => x.Email).Not.Nullable();
             Map(x => x.TelephoneNumber);
 
-            Map(x => x.CurrentBooks).Formula(@"select * from [Book] b join [OrderDetails] od on b.Id = od.BookId join [Order] o on od.OrderId = o.Id where od.EndDate > Getdate() and o.UserId = Id");
+            //Map(x => x.CurrentBooks).Formula(@"select * from [Book] b join [OrderDetails] od on b.Id = od.BookId join [Order] o on od.OrderId = o.Id where od.EndDate > Getdate() and o.UserId = Id");
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿
-using Domain.Model.Models;
-using Ninject;
+﻿using Ninject;
 using Repository.Abstraction.Interfaces;
 using Repository.Implementation.ImplementationClasses;
 
@@ -15,6 +13,9 @@ namespace Infrastructure
             _kernel.Bind<IBookRepository>().To<BookRepository>();
             _kernel.Bind<IAuthorRepository>().To<AuthorRepository>();
             _kernel.Bind<IUserRepository>().To<UserRepository>();
+            _kernel.Bind<IAuthorToBookRepository>().To<AuthorToBookRepository>();
+            _kernel.Bind<IUserRepository>().To<UserRepository>();
+            _kernel.Bind<IRoleRepository>().To<RoleRepository>();
         }
 
 
