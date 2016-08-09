@@ -17,10 +17,12 @@ namespace LibraryV._2._0
         {
             //var author = new Author("Jon", "White");
             //var book = new Book(new List<Author> {author}, "C# for Dummies", DateTime.Now, "");
-            //var repository = ServiceLocator.Resolver<IBookRepository>();
+            var userRepository = ServiceLocator.Resolver<IUserRepository>();
 
             //repository.Save(book);
             DataInitializer();
+
+            userRepository.GetCurrentBooks();
         }
 
 
@@ -31,7 +33,7 @@ namespace LibraryV._2._0
             var authorToBookRepository = ServiceLocator.Resolver<IAuthorToBookRepository>();
             var userRepository = ServiceLocator.Resolver<IUserRepository>();
             var roleRepository = ServiceLocator.Resolver<IRoleRepository>();
-            var userToRoleRepository = ServiceLocator.Resolver<IUserToRoleRepository>
+            var userToRoleRepository = ServiceLocator.Resolver<IUserToRoleRepository>();
 
             List<Author> authorList = new List<Author>()
             {
@@ -129,27 +131,9 @@ namespace LibraryV._2._0
             List<Role> roles = new List<Role>
             {
                 new Role("Admin"),
-                new Role("User"),
-                new Role("Moderator")
+                new Role("User")
             };
 
-            //List<UserToRole> userToRoles = new List<UserToRole>
-            //{
-            //    new UserToRole(users.First(), roles.First()),
-            //    //new UserToRole(),
-            //    //new UserToRole()
-            //};
-
-            foreach (var role in roles)
-            {
-                roleRepository.Save(role);
-            }
-
-            foreach (var user in users)
-            {
-                var userToRole = new UserToRole(user, roles.First(x => x.RoleName == "User"));
-                userRepository.Save(user);
-            }
 
             foreach (var author in authorList)
             {
@@ -162,6 +146,21 @@ namespace LibraryV._2._0
                 var authorToBookEntity = new AuthorToBook(book: book, author: book.Authors.First());
                 authorToBookRepository.Save(authorToBookEntity);
             }
+
+            foreach (var role in roles)
+            {
+                roleRepository.Save(role);
+            }
+
+            foreach (var user in users)
+            {
+                userRepository.Save(user);
+                var userToRole = new UserToRole(user, roles.First(x => x.RoleName == "User"));
+                userToRoleRepository.Save(userToRole);
+            }
+
+            userToRoleRepository.Save(new UserToRole(users.First(x => x.FirstName == "Steph"),
+                roles.First(r => r.RoleName == "Admin")));
         }
     }
 }

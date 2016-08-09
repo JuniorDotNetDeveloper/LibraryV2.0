@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Model.Common;
 
 namespace Domain.Model.Models
 {
@@ -9,11 +10,12 @@ namespace Domain.Model.Models
         public virtual string BookName { get; protected set; }
         public virtual string Motivation { get; set; }
         public virtual string Link { get; set; }
+        public virtual Urgency UrgencyType { get; set; } = Urgency.WouldBeNice;
 
         [Obsolete]
         protected RequestNewBook() { }
 
-        public RequestNewBook(User userId, string bookName, string motivation )
+        public RequestNewBook(User userId, string bookName, string motivation, Urgency urgency )
         {
             if (userId == null)
                 throw new ArgumentException("UserId can't be 0");
@@ -25,6 +27,7 @@ namespace Domain.Model.Models
             User = userId;
             BookName = bookName;
             Motivation = motivation;
+            UrgencyType = urgency;
         }
     }
 }

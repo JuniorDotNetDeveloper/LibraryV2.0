@@ -12,6 +12,7 @@
             Map(x => x.Rating);
             Map(x => x.Status).Not.Nullable();
             Map(x => x.FilterLevel).Not.Nullable();
+            References(x => x.Category);
 
             HasMany(x => x.Comments).AsList().Inverse();
             HasMany(x => x.Tags).Inverse().AsSet();

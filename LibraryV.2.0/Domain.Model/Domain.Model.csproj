@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Common\BookStatus.cs" />
     <Compile Include="Common\DeveloperLevel.cs" />
+    <Compile Include="Common\Urgency.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\AuthorToBook.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookCategory.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Order.cs" />

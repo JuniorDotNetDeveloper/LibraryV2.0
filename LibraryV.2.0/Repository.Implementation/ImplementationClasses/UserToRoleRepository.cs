@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Model.Models;
+using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
 {
-    class UserToRoleRepository
+    public class UserToRoleRepository : Repository<UserToRole>, IUserToRoleRepository
     {
+        public override void Create(UserToRole entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

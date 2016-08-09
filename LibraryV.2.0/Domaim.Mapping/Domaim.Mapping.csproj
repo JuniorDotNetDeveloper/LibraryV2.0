@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AuthorMap.cs" />
     <Compile Include="AuthorToBookMap.cs" />
+    <Compile Include="BookCategoryMap.cs" />
     <Compile Include="BookMap.cs" />
     <Compile Include="CommentMap.cs" />
     <Compile Include="EntityMap.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.Model.Models;
 using Repository.Abstraction.Interfaces;
 
@@ -21,7 +22,14 @@ namespace Repository.Implementation.ImplementationClasses
         //}
         public IList<Book> GetCurrentBooks()
         {
-            throw new System.NotImplementedException();
+            OrderDetails orderDetails = null;
+            Order order = null;
+
+            var currentBooks =  _session.QueryOver<Book>()
+                .JoinQueryOver(() => orderDetails.Book.Id)
+                .JoinQueryOver(() => order.Id)
+                .Where(()=>orderDetails.EndDate > DateTime.Now).List();
+            return currentBooks;
         }
 
         public override void Create(User entity)
