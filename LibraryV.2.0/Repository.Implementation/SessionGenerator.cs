@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
 using Domaim.Mapping;
+using Domaim.Mapping.Conventions;
+using Domain.Model.Models;
+using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -34,7 +37,7 @@ namespace Repository.Implementation
                                                                                                    @"MDDSK40046")
                                                                                                .TrustedConnection()))
                                                         .Mappings(CreateMappingConfiguration)
-                                                        .ExposeConfiguration(
+                                                       .ExposeConfiguration(
                                                             cfg => new SchemaUpdate(cfg).Execute(false, true));
 
 
@@ -46,6 +49,14 @@ namespace Repository.Implementation
             Assembly assembly = typeof(EntityMap<>).Assembly;
             mappingConfiguration.FluentMappings.AddFromAssembly(assembly);
             mappingConfiguration.HbmMappings.AddFromAssembly(assembly);
+
+            mappingConfiguration.AutoMappings.Add(AutoMap.AssemblyOf<Entity>()
+                .Override<User>(u =>
+                {
+                    u.Id(x => x.Id).Column("UID");
+                    CustomForeignKeyConvention.Mappings.Add(u);
+                }
+                ));
 
         }
 

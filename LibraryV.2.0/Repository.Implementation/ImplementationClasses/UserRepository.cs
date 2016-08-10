@@ -9,20 +9,20 @@ namespace Repository.Implementation.ImplementationClasses
     {
         public IList<Book> GetCurrentBooks()
         {
-            OrderDetails orderDetails = null;
-            Order order = null;
+            RentBookDetails rentBookDetails = null;
+            RentBook rentBook = null;
 
             var currentBooks =  _session.QueryOver<Book>()
-                .JoinQueryOver(() => orderDetails.Book)
-                .JoinQueryOver(() => order)
-                .Where(()=>orderDetails.EndDate > DateTime.Now).List();
+                .JoinQueryOver(() => rentBookDetails.Book)
+                .JoinQueryOver(() => rentBook)
+                .Where(()=>rentBookDetails.EndDate > DateTime.Now).List();
             return currentBooks;
 
 
             /*
                          string query = @"select b.Name from [Book] b
-                            join [OrderDetails] od on b.Id = od.BookId
-                            join [Order] o on od.OrderId = o.Id
+                            join [RentBookDetails] od on b.Id = od.BookId
+                            join [RentBook] o on od.OrderId = o.Id
 	                        where od.EndDate > Getdate() and o.UserId = Id";
             */
         }

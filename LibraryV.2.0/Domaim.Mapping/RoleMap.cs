@@ -6,7 +6,7 @@ namespace Domaim.Mapping
     {
         public RoleMap()
         {
-            Map(x => x.RoleName).Not.Nullable().UniqueKey("UQ_RoleName");
+            Map(x => x.RoleName).Not.Nullable().Unique();
         }
     }
 }

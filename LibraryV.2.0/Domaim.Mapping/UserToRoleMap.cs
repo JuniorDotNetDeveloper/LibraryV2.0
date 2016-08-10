@@ -6,8 +6,8 @@ namespace Domaim.Mapping
     {
         public UserToRoleMap()
         {
-            References(x => x.Role).Not.Nullable();
-            References(x => x.User).Not.Nullable();
+            References(x => x.Role).Not.Nullable().ForeignKey("FK_UserToRole_Roles").Cascade.All();
+            References(x => x.User).Not.Nullable().ForeignKey("FK_UserToRole_Users").Cascade.All();
         }
     }
 }

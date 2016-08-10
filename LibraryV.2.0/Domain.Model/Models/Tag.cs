@@ -8,5 +8,13 @@ namespace Domain.Model.Models
 
         [Obsolete]
         protected Tag() {}
+
+        public Tag(string tagName)
+        {
+            if (string.IsNullOrWhiteSpace(tagName))
+                throw new ArgumentNullException($"{nameof(tagName)} is null or empty");
+
+            TagName = tagName;
+        }
     }
 }

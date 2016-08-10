@@ -56,12 +56,15 @@
     <Compile Include="AuthorToBookMap.cs" />
     <Compile Include="BookCategoryMap.cs" />
     <Compile Include="BookMap.cs" />
+    <Compile Include="BookToTagsMap.cs" />
     <Compile Include="CommentMap.cs" />
+    <Compile Include="Conventions\ForeignKeyConvention.cs" />
     <Compile Include="EntityMap.cs" />
-    <Compile Include="OrderDetailsMap.cs" />
-    <Compile Include="OrderMap.cs" />
+    <Compile Include="RentBookDetailsMap.cs" />
+    <Compile Include="RentBookMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestNewBookMap.cs" />
+    <Compile Include="ClaimMap.cs" />
     <Compile Include="RoleMap.cs" />
     <Compile Include="TagMap.cs" />
     <Compile Include="UserMap.cs" />

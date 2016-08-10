@@ -9,8 +9,8 @@ namespace Domaim.Mapping
             Map(x => x.CommetDate).Not.Nullable().ReadOnly();
             Map(x => x.Commentary).Not.Nullable();
 
-            Map(x => x.BookId).Not.Nullable();
-            Map(x => x.UserId).Not.Nullable();
+            References(x => x.Book).Not.Nullable().ForeignKey("FK_Comment_Books");
+            References(x => x.User).Not.Nullable().ForeignKey("FK_Comment_Users");
         }
     }
 }

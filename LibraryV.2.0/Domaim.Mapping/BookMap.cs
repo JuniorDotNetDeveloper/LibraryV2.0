@@ -12,10 +12,14 @@
             Map(x => x.Rating);
             Map(x => x.Status).Not.Nullable();
             Map(x => x.FilterLevel).Not.Nullable();
-            References(x => x.Category);
 
-            HasMany(x => x.Comments).AsList().Inverse();
-            HasMany(x => x.Tags).Inverse().AsSet();
+            //HasMany(x => x.Authors).Inverse();
+
+            References(x => x.Category).Not.Nullable().ForeignKey("FK_Book_Categories");
+            HasMany(x => x.Comments).Inverse();
+            HasMany(x => x.Tags).Inverse();
+
+            CheckConstraint(@"[Status] = 'Free' OR [Status] = 'Busy'");
         }
     }
 }

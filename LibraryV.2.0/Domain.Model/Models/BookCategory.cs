@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Model.Models
 {
@@ -6,6 +7,7 @@ namespace Domain.Model.Models
     {
         public virtual string CategoryName { get; protected set; }
         public virtual string Description { get; set; }
+        public virtual IList<Book> Books { get; protected set; } = new List<Book>();
 
         [Obsolete]
         protected BookCategory() {}

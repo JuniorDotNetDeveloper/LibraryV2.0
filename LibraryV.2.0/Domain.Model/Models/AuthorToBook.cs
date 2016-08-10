@@ -12,6 +12,8 @@ namespace Domain.Model.Models
 
         public AuthorToBook(Book book, Author author)
         {
+            if (book == null)
+                throw new ArgumentNullException();
             Book = book;
             Author = author;
         }

@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ImplementationClasses\AuthorRepository.cs" />
     <Compile Include="ImplementationClasses\AuthorToBookRepository.cs" />
+    <Compile Include="ImplementationClasses\BookCategoryRepository.cs" />
     <Compile Include="ImplementationClasses\BookRepository.cs" />
     <Compile Include="ImplementationClasses\Repository.cs" />
     <Compile Include="ImplementationClasses\RoleRepository.cs" />

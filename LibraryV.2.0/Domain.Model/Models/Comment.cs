@@ -4,24 +4,24 @@ namespace Domain.Model.Models
 {
     public class Comment : Entity
     {
-        public virtual long UserId { get; set; }
-        public virtual long BookId { get; set; }
+        public virtual User User { get; set; }
+        public virtual Book Book { get; set; }
         public virtual string Commentary{ get; set; }
         public virtual DateTime CommetDate { get; } = DateTime.Now;
 
         [Obsolete]
         protected Comment()  { }
 
-        public Comment(long userId, long bookId, string commentary)
+        public Comment(User user, Book book, string commentary)
         {
-            if (userId == 0)
+            if (user == null)
                 throw new ArgumentException("UserId can not be 0");
-            if (bookId == 0)
+            if (book == null)
                 throw new ArgumentException("BookId can not be 0");
             if (string.IsNullOrWhiteSpace(commentary))
                 throw new ArgumentException("Comment can't be null or whiteSpace");
-            UserId = userId;
-            BookId = bookId;
+            User = user;
+            Book = book;
             Commentary = commentary;
         }
     }

@@ -20,9 +20,6 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
-        public override void Create(Book entity)
-        {
-            throw new System.NotImplementedException();
-        }
+     
     }
 }

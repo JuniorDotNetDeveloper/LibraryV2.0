@@ -10,8 +10,8 @@ namespace Domain.Model.Models
         public virtual DateTime PublicationDate { get; protected set; }
         public virtual BookCategory Category { get; protected set; }
         public virtual string Description { get; set; }
-        public virtual BookStatus Status { get; set; }
-        public virtual DeveloperLevel FilterLevel { get; set; }
+        public virtual BookStatus Status { get; set; } = BookStatus.Free;
+        public virtual DeveloperLevel FilterLevel { get; set; } = DeveloperLevel.Beginner;
         public virtual int? Rating { get; set; }
         public virtual IList<Author> Authors { get; protected set; }
         public virtual IList<Tag> Tags { get; set; }
@@ -22,7 +22,7 @@ namespace Domain.Model.Models
         protected Book() { }
 
         #region constructors must be refacored because of temporaly insertion information
-        public Book(List<Author> authors, string bookName, DateTime publicationDate, string description)
+        public Book(List<Author> authors, string bookName, DateTime publicationDate,  string description)
           
         {
             ValidateInput(authors, bookName, publicationDate, description);
@@ -38,10 +38,10 @@ namespace Domain.Model.Models
             
         }
 
-        public Book(Author author, string bookName, DateTime publicationDate, string category, string description = null)
+        public Book(Author author, string bookName, DateTime publicationDate, BookCategory category, string description = null)
             : this(new List<Author> { author }, bookName, publicationDate, description)
         {
-
+            Category = category;
         }
         #endregion
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Domain.Model.Models;
 using NHibernate;
 using Repository.Abstraction.Interfaces;
@@ -13,7 +11,6 @@ namespace Repository.Implementation.ImplementationClasses
 
         public IEnumerable Collection { get; }
 
-        public abstract void Create(TEntity entity);
 
         public void Delete(TEntity entity) 
         {

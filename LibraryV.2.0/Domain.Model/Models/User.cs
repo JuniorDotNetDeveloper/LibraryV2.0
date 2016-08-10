@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Model.Models
 {
@@ -9,7 +10,7 @@ namespace Domain.Model.Models
         public virtual string Email { get; protected set; }
         public virtual int TelephoneNumber { get; protected set; }
         public virtual string Password { get; protected set; }
-        //public virtual IList<Book> CurrentBooks { get; } = new List<Book>();
+        public virtual IList<Book> CurrentBooks { get; } = new List<Book>();
 
         public User(string firstName, string lastName, string password, string email, int telephoneNumner = 0)
         {

@@ -6,8 +6,8 @@ namespace Domaim.Mapping
     {
         public AuthorToBookMap()
         {
-            References(x => x.Author).Not.Nullable();
-            References(x => x.Book).Not.Nullable();
+            References(x => x.Author).Not.Nullable().ForeignKey("FK_AuthorToBook_Authors").Cascade.SaveUpdate();
+            References(x => x.Book).Not.Nullable().ForeignKey("FK_AuthorToBook_Books").Cascade.SaveUpdate();
         }
     }
 }
