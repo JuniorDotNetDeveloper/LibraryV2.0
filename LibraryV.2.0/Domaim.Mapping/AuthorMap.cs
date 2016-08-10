@@ -8,7 +8,7 @@ namespace Domaim.Mapping
         {
             Map(x => x.FirstName).Not.Nullable();
             Map(x => x.LastName).Not.Nullable();
-            //HasMany(x => x.PersonalBooks);
+            HasMany(x => x.PersonalBooks);
             
         }
     }

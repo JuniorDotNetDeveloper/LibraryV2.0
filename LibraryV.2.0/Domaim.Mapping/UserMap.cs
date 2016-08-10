@@ -12,7 +12,7 @@ namespace Domaim.Mapping
             Map(x => x.Email).Not.Nullable();
             Map(x => x.TelephoneNumber);
 
-            HasMany(x => x.CurrentBooks).Inverse();
+            //HasMany(x => x.CurrentBooks);
             //Map(x => x.CurrentBooks).Formula(@"select * from [Book] b join [RentBookDetails] od on b.Id = od.BookId join [RentBook] o on od.OrderId = o.Id where od.EndDate > Getdate() and o.UserId = Id");
         }
     }

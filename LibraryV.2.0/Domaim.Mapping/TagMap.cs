@@ -7,6 +7,7 @@ namespace Domaim.Mapping
         public TagMap()
         {
             Map(x => x.TagName).Not.Nullable().UniqueKey("TagName");
+            HasMany(x => x.Books).Inverse();
         }
     }
 }

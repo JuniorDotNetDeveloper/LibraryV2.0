@@ -1,4 +1,6 @@
-﻿using Domain.Model.Models;
+﻿using System.Collections.Generic;
+using Domain.Model.Common;
+using Domain.Model.Models;
 
 namespace Repository.Abstraction.Interfaces
 {
@@ -6,5 +8,6 @@ namespace Repository.Abstraction.Interfaces
     {
         void ModifyBook(Book book);
         void AddNewBook(Book book);
+        IList<Book> FindAllBooksByLevel(DeveloperLevel level);
     }
 }

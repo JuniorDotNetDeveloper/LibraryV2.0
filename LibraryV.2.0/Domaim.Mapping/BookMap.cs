@@ -13,11 +13,11 @@
             Map(x => x.Status).Not.Nullable();
             Map(x => x.FilterLevel).Not.Nullable();
 
-            //HasMany(x => x.Authors).Inverse();
+            HasMany(x => x.Authors).Inverse();
 
             References(x => x.Category).Not.Nullable().ForeignKey("FK_Book_Categories");
             HasMany(x => x.Comments).Inverse();
-            HasMany(x => x.Tags).Inverse();
+            HasMany(x => x.Tags);
 
             CheckConstraint(@"[Status] = 'Free' OR [Status] = 'Busy'");
         }

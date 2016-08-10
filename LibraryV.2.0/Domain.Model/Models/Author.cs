@@ -7,19 +7,19 @@ namespace Domain.Model.Models
     {
         public virtual string FirstName { get; protected set; }
         public virtual string LastName { get; protected set; }
-        public virtual IList<Book> PersonalBooks { get; } = new List<Book>();
+        public virtual IList<AuthorToBook> PersonalBooks { get; } = new List<AuthorToBook>();
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
         [Obsolete]
         protected Author() { }
-        public Author(string firstName, string lastName, IList<Book> personalBooks = null)
+        public Author(string firstName, string lastName, IList<AuthorToBook> personalBooks = null)
         {
             if (string.IsNullOrEmpty(firstName))
                 throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
             if (string.IsNullOrEmpty(lastName))
                 throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
 
-            PersonalBooks = personalBooks ?? new List<Book>();
+            PersonalBooks = personalBooks ?? new List<AuthorToBook>();
             FirstName = firstName;
             LastName = lastName;
         }
@@ -28,8 +28,8 @@ namespace Domain.Model.Models
         {
             if (book == null)
                 throw new ArgumentNullException($"{nameof(book)} is null");
-
-            PersonalBooks.Add(book);
+            var newBook = new AuthorToBook(book, this);
+            PersonalBooks.Add(newBook);
         }
     }
 }

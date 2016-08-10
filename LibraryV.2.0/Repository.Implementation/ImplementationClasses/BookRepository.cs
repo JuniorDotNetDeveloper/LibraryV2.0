@@ -1,5 +1,8 @@
-﻿using Domain.Model.Models;
+﻿using System.Collections.Generic;
+using Domain.Model.Common;
+using Domain.Model.Models;
 using NHibernate;
+using NHibernate.Transform;
 using Repository.Abstraction.Interfaces;
 
 namespace Repository.Implementation.ImplementationClasses
@@ -20,6 +23,14 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
-     
+        public IList<Book> FindAllBooksByLevel(DeveloperLevel level)
+        {
+            var books = _session.QueryOver<Book>()
+                                   .Where(x => x.FilterLevel == level)
+                                   .TransformUsing(Transformers.RootEntity)
+                                   .List();
+
+            return books;
+        }
     }
 }

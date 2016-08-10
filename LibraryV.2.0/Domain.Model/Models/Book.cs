@@ -13,45 +13,45 @@ namespace Domain.Model.Models
         public virtual BookStatus Status { get; set; } = BookStatus.Free;
         public virtual DeveloperLevel FilterLevel { get; set; } = DeveloperLevel.Beginner;
         public virtual int? Rating { get; set; }
-        public virtual IList<Author> Authors { get; protected set; }
-        public virtual IList<Tag> Tags { get; set; }
+        public virtual IList<AuthorToBook> Authors { get; protected set; }
+        public virtual IList<BookToTags> Tags { get; set; }
         public virtual IList<Comment> Comments { get; }
-        //public virtual int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
+       
 
         [Obsolete]
         protected Book() { }
 
         #region constructors must be refacored because of temporaly insertion information
-        public Book(List<Author> authors, string bookName, DateTime publicationDate,  string description)
+        public Book(string bookName, DateTime publicationDate,  string description, IList<AuthorToBook> authors)
           
         {
-            ValidateInput(authors, bookName, publicationDate, description);
+            ValidateInput(bookName, publicationDate, description, authors);
 
             Authors = authors;
             Name = bookName;
             PublicationDate = publicationDate;
         }
 
-        public Book(Author author, string bookName, DateTime publicationDate, string description = null)
-            : this(new List<Author> {author}, bookName, publicationDate, description)
+        public Book(string bookName, DateTime publicationDate, string description = null, AuthorToBook author = null)
+            : this( bookName, publicationDate, description, new List<AuthorToBook> { author })
         {
             
         }
 
-        public Book(Author author, string bookName, DateTime publicationDate, BookCategory category, string description = null)
-            : this(new List<Author> { author }, bookName, publicationDate, description)
+        public Book(string bookName, DateTime publicationDate, BookCategory category, string description = null, AuthorToBook author = null)
+            : this( bookName, publicationDate, description, new List<AuthorToBook> { author })
         {
             Category = category;
         }
         #endregion
 
-        private void ValidateInput(List<Author> authors, string bookName, DateTime publicationDate, string description)
+        private void ValidateInput( string bookName, DateTime publicationDate, string description, IList<AuthorToBook> authors = null)
         {
             if (string.IsNullOrWhiteSpace(bookName))
                 throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
             if (publicationDate == null)
                 throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
-            if (authors == null) throw new ArgumentNullException($"{nameof(authors)} is requared");
+            //if (authors == null) throw new ArgumentNullException($"{nameof(authors)} is requared");
 
             Description = description ?? "Without description";
         }
