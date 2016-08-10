@@ -30,7 +30,7 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetById(long id)
         {
             return _session.Get<TEntity>(id);
         }

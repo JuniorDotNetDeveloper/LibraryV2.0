@@ -6,8 +6,8 @@ namespace Domaim.Mapping
     {
         protected AuthorMap()
         {
-            Map(x => x.FirstName).Not.Nullable();
-            Map(x => x.LastName).Not.Nullable();
+            Map(x => x.FirstName).Not.Nullable().UniqueKey("UQ_FirstLastName");
+            Map(x => x.LastName).Not.Nullable().UniqueKey("UQ_FirstLastName");
             HasMany(x => x.PersonalBooks);
             
         }

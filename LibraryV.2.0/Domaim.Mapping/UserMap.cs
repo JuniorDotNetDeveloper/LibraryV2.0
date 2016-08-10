@@ -6,10 +6,10 @@ namespace Domaim.Mapping
     {
         public UserMap()
         {
-            Map(x => x.FirstName).Not.Nullable();
-            Map(x => x.LastName).Not.Nullable();
+            Map(x => x.FirstName).Not.Nullable().UniqueKey("UQ_FirstLastName");
+            Map(x => x.LastName).Not.Nullable().UniqueKey("UQ_FirstLastName");
             Map(x => x.Password).Not.Nullable();
-            Map(x => x.Email).Not.Nullable();
+            Map(x => x.Email).Not.Nullable().Unique();
             Map(x => x.TelephoneNumber);
 
             //HasMany(x => x.CurrentBooks);

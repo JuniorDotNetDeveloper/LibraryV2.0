@@ -11,6 +11,6 @@ namespace Repository.Abstraction.Interfaces
         void Update(TEntity entity);
         void Delete(TEntity entity);
         void Save(TEntity entity);
-        TEntity GetById(int id);
+        TEntity GetById(long id);
     }
 }
