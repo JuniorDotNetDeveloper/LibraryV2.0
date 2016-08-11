@@ -17,6 +17,8 @@ namespace Infrastructure
             _kernel.Bind<IUserToRoleRepository>().To<UserToRoleRepository>();
             _kernel.Bind<IRoleRepository>().To<RoleRepository>();
             _kernel.Bind<IBookCategoryRepository>().To<BookCategoryRepository>();
+            _kernel.Bind<IBookToTagsRepository>().To<BookToTagsRepository>();
+
         }
 
 

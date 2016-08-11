@@ -7,6 +7,7 @@ namespace Domaim.Mapping
         public RoleMap()
         {
             Map(x => x.RoleName).Not.Nullable().Unique();
+            HasMany(x => x.Users).Inverse();
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Repository.Abstraction.Interfaces
         void ModifyBook(Book book);
         void AddNewBook(Book book);
         IList<Book> FindAllBooksByLevel(DeveloperLevel level);
+        IList<Book> GetAllBooks();
     }
 }

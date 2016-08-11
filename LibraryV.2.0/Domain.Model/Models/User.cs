@@ -10,7 +10,8 @@ namespace Domain.Model.Models
         public virtual string Email { get; protected set; }
         public virtual int TelephoneNumber { get; protected set; }
         public virtual string Password { get; protected set; }
-        
+        public virtual IList<UserToRole> Roles { get; set; }
+
 
         public User(string firstName, string lastName, string password, string email, int telephoneNumner = 0)
         {

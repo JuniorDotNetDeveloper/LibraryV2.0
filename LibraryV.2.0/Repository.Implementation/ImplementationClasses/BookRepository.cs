@@ -32,5 +32,11 @@ namespace Repository.Implementation.ImplementationClasses
 
             return books;
         }
+
+        public IList<Book> GetAllBooks()
+        {
+            var books = _session.QueryOver<Book>().List();
+            return books;
+        }
     }
 }

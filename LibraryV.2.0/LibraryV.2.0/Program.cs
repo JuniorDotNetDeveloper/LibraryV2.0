@@ -24,13 +24,30 @@ namespace LibraryV._2._0
             var roleRepository = ServiceLocator.Resolver<IRoleRepository>();
             var userToRoleRepository = ServiceLocator.Resolver<IUserToRoleRepository>();
             var bookCategoryRepository = ServiceLocator.Resolver<IBookCategoryRepository>();
+            var bookToTagRepository = ServiceLocator.Resolver<IBookToTagsRepository>();
+
 
             //var author = new Author("Jon", "White");
             //var book = new Book(new List<Author> {author}, "C# for Dummies", DateTime.Now, "");
 
             //InertUsersAnsRoles(userToRoleRepository);
             //InsertCategories(bookCategoryRepository);
-            InsertBooksAndAuthors(authorToBookRepository, bookCategoryRepository);
+            //InsertBooksAndAuthors(authorToBookRepository, bookCategoryRepository);
+            //InsertTags(bookToTagRepository, bookRepository);
+
+            var user = userRepository.GetById(1);
+            var userRoles = user.Roles.Select(x => x.Role);
+
+            var book = bookRepository.GetById(3);
+            var bookAuthor = book.Authors.Select(x => x.Author);
+            foreach (var item in bookAuthor)
+            {
+                Console.WriteLine($"{item.FirstName} {item.LastName}");
+            }
+            foreach (var item in userRoles)
+            {
+                Console.WriteLine(item.RoleName);
+            }
             //repository.Save(book);
             //DataInitializer();
 
@@ -57,7 +74,6 @@ namespace LibraryV._2._0
             authTobook = new AuthorToBook(book3, author4);
             authorToBookRepository.Save(authTobook);
         }
-
         private static void InertUsersAnsRoles(IUserToRoleRepository userToRoleRepository)
         {
             var user1 = new User("Vadim", "Abdullaev", "password", "Abdullaev@email");
@@ -100,6 +116,30 @@ namespace LibraryV._2._0
             {
                 bookCategoryRepository.Save(category);
             }
+        }
+        private static void InsertTags(IBookToTagsRepository bookToTagRepository, IBookRepository bookRepo)
+        {
+            var tag1 = new Tag("C#");
+            var tag2 = new Tag("MVC");
+            var tag3 = new Tag("ORM");
+            var tag4 = new Tag("CRM");
+            var tag5 = new Tag("Pattern");
+
+            var allBooks = bookRepo.GetAllBooks();
+
+            var bookToTag = new BookToTags(allBooks.FirstOrDefault(x => x.Name == "C# for dummies"), tag5);
+            bookToTagRepository.Save(bookToTag);
+            bookToTag = new BookToTags(allBooks.FirstOrDefault(x => x.Name == "C# for dummies"), tag3);
+            bookToTagRepository.Save(bookToTag);
+
+            bookToTag = new BookToTags(allBooks.FirstOrDefault(x => x.Name == "MVC5"), tag2);
+            bookToTagRepository.Save(bookToTag);
+            bookToTag = new BookToTags(allBooks.FirstOrDefault(x => x.Name == "MVC5"), tag3);
+            bookToTagRepository.Save(bookToTag);
+
+            bookToTag = new BookToTags(allBooks.FirstOrDefault(x => x.Name == "C# Nutshell"), tag1);
+            bookToTagRepository.Save(bookToTag);
+
         }
 
         //public static void DataInitializer()

@@ -7,7 +7,7 @@ namespace Domaim.Mapping
     {
         public BookToTagsMap()
         {
-            References(x => x.Book).Not.Nullable().ForeignKey("FK_BookToTags_Books").Cascade.All();
+            References(x => x.Book).Not.Nullable().ForeignKey("FK_BookToTags_Books").Cascade.Delete();
             References(x => x.Tag).Not.Nullable().ForeignKey("FK_BookToTags_Tags").Cascade.All();
         }
     }
