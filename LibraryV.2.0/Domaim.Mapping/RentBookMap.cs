@@ -7,6 +7,7 @@ namespace Domaim.Mapping
         public RentBookMap()
         {
             References(x => x.User).Not.Nullable().ForeignKey("FK_RentBook_Users");
+            HasMany(x => x.RentDetails).Inverse().Cascade.SaveUpdate();
             Map(x => x.RentDate).Not.Nullable();
         }
     }

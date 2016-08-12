@@ -18,7 +18,13 @@ namespace Repository.Implementation.ImplementationClasses
         {
             using (ITransaction transaction = _session.BeginTransaction())
             {
-                _session.Save(book);
+                foreach (var item in book.Authors)
+                {
+                    _session.SaveOrUpdate(item.Author);
+                    //_session.SaveOrUpdate(item);
+                }
+                _session.SaveOrUpdate(book);
+                //_session.Save(book);
                 transaction.Commit();
             }
         }
@@ -38,5 +44,7 @@ namespace Repository.Implementation.ImplementationClasses
             var books = _session.QueryOver<Book>().List();
             return books;
         }
+
+
     }
 }

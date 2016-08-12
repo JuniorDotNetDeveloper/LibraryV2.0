@@ -6,7 +6,7 @@ namespace Domaim.Mapping
     {
         public RentBookDetailsMap()
         {
-            References(x => x.RentBook).Not.Nullable().ForeignKey("FK_RentBookDetails_RentBooks").Cascade.All(); ;
+            References(x => x.RentBook).Not.Nullable().ForeignKey("FK_RentBookDetails_RentBooks");
             References(x => x.Book).Not.Nullable().ForeignKey("FK_RentBookDetails_Books");
 
             Map(x => x.EndDate).Not.Nullable();

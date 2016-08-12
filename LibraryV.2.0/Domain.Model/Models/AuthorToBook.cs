@@ -13,9 +13,19 @@ namespace Domain.Model.Models
         public AuthorToBook(Book book, Author author)
         {
             if (book == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException($"{book} is null");
+            if (author == null)
+                throw new ArgumentNullException($"{author} is null");
             Book = book;
             Author = author;
         }
+
+        //public AuthorToBook(Book book, int authorId)
+        //{
+        //    if (book == null)
+        //        throw new ArgumentNullException();
+        //    Book = book;
+        //    Author.Id = authorId;
+        //}
     }
 }

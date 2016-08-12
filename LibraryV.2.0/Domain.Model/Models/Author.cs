@@ -9,17 +9,15 @@ namespace Domain.Model.Models
         public virtual string LastName { get; protected set; }
         public virtual IList<AuthorToBook> PersonalBooks { get; } = new List<AuthorToBook>();
 
-        //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
         [Obsolete]
         protected Author() { }
-        public Author(string firstName, string lastName, IList<AuthorToBook> personalBooks = null)
+        public Author(string firstName, string lastName)
         {
             if (string.IsNullOrEmpty(firstName))
                 throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
             if (string.IsNullOrEmpty(lastName))
                 throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
-
-            PersonalBooks = personalBooks ?? new List<AuthorToBook>();
+            
             FirstName = firstName;
             LastName = lastName;
         }

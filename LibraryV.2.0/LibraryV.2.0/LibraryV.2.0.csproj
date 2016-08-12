@@ -72,6 +72,10 @@
       <Project>{6431aa31-eb8a-4863-b21a-e58e2633dd93}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model.Dto\Model.Dto.csproj">
+      <Project>{0bb7b326-0743-4ea2-a545-fea2a97a9e56}</Project>
+      <Name>Model.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository.Abstraction\Repository.Abstraction.csproj">
       <Project>{21b577b1-7243-4aad-899e-62705397317c}</Project>
       <Name>Repository.Abstraction</Name>

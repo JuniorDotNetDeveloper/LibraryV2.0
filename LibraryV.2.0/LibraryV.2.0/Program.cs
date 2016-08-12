@@ -12,7 +12,7 @@ namespace LibraryV._2._0
     {
         static Program()
         {
-            //NHibernateProfiler.Initialize();
+            NHibernateProfiler.Initialize();
             ServiceLocator.RegisterAll();
         }
         static void Main(string[] args)
@@ -21,10 +21,24 @@ namespace LibraryV._2._0
             var authorRepository = ServiceLocator.Resolver<IAuthorRepository>();
             var authorToBookRepository = ServiceLocator.Resolver<IAuthorToBookRepository>();
             var userRepository = ServiceLocator.Resolver<IUserRepository>();
-            var roleRepository = ServiceLocator.Resolver<IRoleRepository>();
+            //var roleRepository = ServiceLocator.Resolver<IRoleRepository>();
             var userToRoleRepository = ServiceLocator.Resolver<IUserToRoleRepository>();
             var bookCategoryRepository = ServiceLocator.Resolver<IBookCategoryRepository>();
             var bookToTagRepository = ServiceLocator.Resolver<IBookToTagsRepository>();
+
+
+
+
+            //var allReadedBooks = userRepository.GetAllReadedBooks();
+            //var getCurrentBooks = userRepository.GetCurrentBooks(1);
+            //var getBooks = bookRepository.GetAllBooks();
+
+            //var category = bookCategoryRepository.GetById(4);
+            ////var author = authorRepository.GetById(4);
+            //var author = new Author("test112", "test12");
+            //var book1 = new Book("C# for dummies authors", new DateTime(2009, 01, 01), category, new List<Author> { author });
+            //bookRepository.AddNewBook(book1);
+
 
 
             //var author = new Author("Jon", "White");
@@ -32,22 +46,23 @@ namespace LibraryV._2._0
 
             //InertUsersAnsRoles(userToRoleRepository);
             //InsertCategories(bookCategoryRepository);
-            //InsertBooksAndAuthors(authorToBookRepository, bookCategoryRepository);
-            //InsertTags(bookToTagRepository, bookRepository);
+            InsertBooksAndAuthors(authorToBookRepository, bookCategoryRepository);
+            InsertTags(bookToTagRepository, bookRepository);
 
-            var user = userRepository.GetById(1);
-            var userRoles = user.Roles.Select(x => x.Role);
+            //var user = userRepository.GetById(1);
+            //var userRoles = user.Roles.Select(x => x.Role);
 
-            var book = bookRepository.GetById(3);
-            var bookAuthor = book.Authors.Select(x => x.Author);
-            foreach (var item in bookAuthor)
-            {
-                Console.WriteLine($"{item.FirstName} {item.LastName}");
-            }
-            foreach (var item in userRoles)
-            {
-                Console.WriteLine(item.RoleName);
-            }
+            //var book = bookRepository.GetById(3);
+            //var bookAuthor = book.Authors.Select(x => x.Author);
+
+            //foreach (var item in bookAuthor)
+            //{
+            //    Console.WriteLine($"{item.FirstName} {item.LastName}");
+            //}
+            //foreach (var item in userRoles)
+            //{
+            //    Console.WriteLine(item.RoleName);
+            //}
             //repository.Save(book);
             //DataInitializer();
 
@@ -56,21 +71,36 @@ namespace LibraryV._2._0
 
         private static void InsertBooksAndAuthors(IAuthorToBookRepository authorToBookRepository, IBookCategoryRepository bookCategoryRepository)
         {
-            var book1 = new Book("C# for dummies", new DateTime(2009, 01, 01), bookCategoryRepository.GetById(4));
-            var book2 = new Book("MVC5", new DateTime(2010, 01, 01), bookCategoryRepository.GetById(4));
-            var book3 = new Book("C# Nutshell", new DateTime(2013, 01, 01), bookCategoryRepository.GetById(4));
+            var authorRepository = ServiceLocator.Resolver<IAuthorRepository>();
+            var bookRepository = ServiceLocator.Resolver<IBookRepository>();
 
-            var author1 = new Author("Jon", "Skit");
+            var author1 = authorRepository.GetById(2); /*new Author("Jon", "Skit")*/;
+            //authorRepository.Save(author1);
             var author2 = new Author("Adam", "Freemann");
+            //authorRepository.Save(author2);
             var author3 = new Author("Joseph", "Albahari");
+            //authorRepository.Save(author3);
             var author4 = new Author("Ben", "Albahari");
+            //authorRepository.Save(author4);
+
+
+            var book1 = new Book("C# for dummies", new DateTime(2009, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { author1 });
+            var book2 = new Book("MVC5", new DateTime(2010, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { authorRepository.GetById(3) });
+            var book3 = new Book("C# Nutshell", new DateTime(2013, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { authorRepository.GetById(4), authorRepository.GetById(5) });
+            bookRepository.AddNewBook(book1);
+            bookRepository.Save(book2);
+            bookRepository.Save(book3);
+
 
             var authTobook = new AuthorToBook(book1, author1);
             authorToBookRepository.Save(authTobook);
+
             authTobook = new AuthorToBook(book2, author2);
             authorToBookRepository.Save(authTobook);
+
             authTobook = new AuthorToBook(book3, author3);
             authorToBookRepository.Save(authTobook);
+
             authTobook = new AuthorToBook(book3, author4);
             authorToBookRepository.Save(authTobook);
         }

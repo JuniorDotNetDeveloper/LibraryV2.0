@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using Domain.Model.Models;
+using Domain.Model.Dto;
 
 namespace Repository.Abstraction.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        IList<Book> GetCurrentBooks();
+        IList<Book> GetCurrentBooks(long userId);
+        IList<UsersReadedBooks> GetAllReadedBooks();
     }
 }

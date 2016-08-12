@@ -57,6 +57,10 @@
       <Project>{10375f1b-d8d8-4932-a018-c9c985c497ea}</Project>
       <Name>Domain.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model.Dto\Model.Dto.csproj">
+      <Project>{0bb7b326-0743-4ea2-a545-fea2a97a9e56}</Project>
+      <Name>Model.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
