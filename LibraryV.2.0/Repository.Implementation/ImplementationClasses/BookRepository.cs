@@ -20,7 +20,7 @@ namespace Repository.Implementation.ImplementationClasses
             {
                 foreach (var item in book.Authors)
                 {
-                    _session.SaveOrUpdate(item.Author);
+                    //_session.
                     //_session.SaveOrUpdate(item);
                 }
                 _session.SaveOrUpdate(book);

@@ -41,13 +41,20 @@ namespace LibraryV._2._0
 
 
 
-            //var author = new Author("Jon", "White");
-            //var book = new Book(new List<Author> {author}, "C# for Dummies", DateTime.Now, "");
-
             //InertUsersAnsRoles(userToRoleRepository);
             //InsertCategories(bookCategoryRepository);
-            InsertBooksAndAuthors(authorToBookRepository, bookCategoryRepository);
-            InsertTags(bookToTagRepository, bookRepository);
+            //InsertBooksAndAuthors(bookRepository, bookCategoryRepository);
+            //InsertTags(bookToTagRepository, bookRepository);
+
+
+            ////var author = new Author("Jon", "White");
+            //var author = authorRepository.GetById(5);
+            ////authorRepository.MakeDetached(author);
+            //var newCategory = new BookCategory(".net", ".NET is the development platform used by millions of developers to create apps and services on any device and OS, with amazing performance and great developer productivity.");
+            //bookCategoryRepository.Save(newCategory);
+            //var book = new Book("Pro C# 5.0 and the .NET 4.5 Framework", new DateTime(2012,08,21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { new Author("Andrew", "Troelsen") }, "This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering the important new features that make .NET 4.5 the most comprehensive release yet.");
+            //bookRepository.AddNewBook(book);
+
 
             //var user = userRepository.GetById(1);
             //var userRoles = user.Roles.Select(x => x.Role);
@@ -69,12 +76,10 @@ namespace LibraryV._2._0
             //userRepository.GetCurrentBooks();
         }
 
-        private static void InsertBooksAndAuthors(IAuthorToBookRepository authorToBookRepository, IBookCategoryRepository bookCategoryRepository)
+        private static void InsertBooksAndAuthors(IBookRepository bookRepository, IBookCategoryRepository bookCategoryRepository)
         {
-            var authorRepository = ServiceLocator.Resolver<IAuthorRepository>();
-            var bookRepository = ServiceLocator.Resolver<IBookRepository>();
-
-            var author1 = authorRepository.GetById(2); /*new Author("Jon", "Skit")*/;
+            
+            var author1 = /*authorRepository.GetById(2);*/ new Author("Jon", "Skit");
             //authorRepository.Save(author1);
             var author2 = new Author("Adam", "Freemann");
             //authorRepository.Save(author2);
@@ -85,24 +90,24 @@ namespace LibraryV._2._0
 
 
             var book1 = new Book("C# for dummies", new DateTime(2009, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { author1 });
-            var book2 = new Book("MVC5", new DateTime(2010, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { authorRepository.GetById(3) });
-            var book3 = new Book("C# Nutshell", new DateTime(2013, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { authorRepository.GetById(4), authorRepository.GetById(5) });
+            var book2 = new Book("MVC5", new DateTime(2010, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { author2 /*authorRepository.GetById(3)*/ });
+            var book3 = new Book("C# Nutshell", new DateTime(2013, 01, 01), bookCategoryRepository.GetById(4), new List<Author> { author3, author4 /*authorRepository.GetById(4), authorRepository.GetById(5) */});
             bookRepository.AddNewBook(book1);
             bookRepository.Save(book2);
             bookRepository.Save(book3);
 
 
-            var authTobook = new AuthorToBook(book1, author1);
-            authorToBookRepository.Save(authTobook);
+            //var authTobook = new AuthorToBook(book1, author1);
+            //authorToBookRepository.Save(authTobook);
 
-            authTobook = new AuthorToBook(book2, author2);
-            authorToBookRepository.Save(authTobook);
+            //authTobook = new AuthorToBook(book2, author2);
+            //authorToBookRepository.Save(authTobook);
 
-            authTobook = new AuthorToBook(book3, author3);
-            authorToBookRepository.Save(authTobook);
+            //authTobook = new AuthorToBook(book3, author3);
+            //authorToBookRepository.Save(authTobook);
 
-            authTobook = new AuthorToBook(book3, author4);
-            authorToBookRepository.Save(authTobook);
+            //authTobook = new AuthorToBook(book3, author4);
+            //authorToBookRepository.Save(authTobook);
         }
         private static void InertUsersAnsRoles(IUserToRoleRepository userToRoleRepository)
         {

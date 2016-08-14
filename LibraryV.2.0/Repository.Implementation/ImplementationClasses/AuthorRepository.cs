@@ -11,6 +11,9 @@ namespace Repository.Implementation.ImplementationClasses
 	                where a.Id = (select bta.AuthorId from BookToAuthor bta
 					where bta.BookId = b.Id)
         */
-        
+        public void MakeDetached(Author author)
+        {
+            _session.Evict(author);
+        }
     }
 }
