@@ -47,13 +47,16 @@ namespace LibraryV._2._0
             //InsertTags(bookToTagRepository, bookRepository);
 
 
-            ////var author = new Author("Jon", "White");
+            //var author = authorRepository.GetById(6);
+
+
+            //var book = new Book("testBook22", new DateTime(2012, 08, 21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { new Author("vaim2", "vadi2") });
+            //bookRepository.Save(book);
+
             //var author = authorRepository.GetById(5);
             ////authorRepository.MakeDetached(author);
-            //var newCategory = new BookCategory(".net", ".NET is the development platform used by millions of developers to create apps and services on any device and OS, with amazing performance and great developer productivity.");
-            //bookCategoryRepository.Save(newCategory);
-            //var book = new Book("Pro C# 5.0 and the .NET 4.5 Framework", new DateTime(2012,08,21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { new Author("Andrew", "Troelsen") }, "This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering the important new features that make .NET 4.5 the most comprehensive release yet.");
-            //bookRepository.AddNewBook(book);
+            //var book1 = new Book("Pro C# 5.0 and the .NET 4.5 Framework, edition 6", new DateTime(2012, 08, 21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { author }, "This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering the important new features that make .NET 4.5 the most comprehensive release yet.");
+            //bookRepository.Save(book1);
 
 
             //var user = userRepository.GetById(1);

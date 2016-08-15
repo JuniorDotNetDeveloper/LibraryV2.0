@@ -11,6 +11,10 @@ namespace Repository.Implementation.ImplementationClasses
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
+        public UserRepository(ISessionProvider sessionProvider) : base(sessionProvider)
+        {
+        }
+
         public IList<UsersReadedBooks> GetAllReadedBooks()
         {
             /*

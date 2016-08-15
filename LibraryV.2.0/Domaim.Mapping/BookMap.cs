@@ -8,7 +8,7 @@
         {
             Map(x => x.Name).UniqueKey("UQ_Book").Not.Nullable();
             Map(x => x.PublicationDate).Not.Nullable();
-            Map(x => x.Description).Length(10000);
+            Map(x => x.Description).Length(1000);
             Map(x => x.Rating);
             Map(x => x.Status).Not.Nullable();
             Map(x => x.FilterLevel).Not.Nullable();

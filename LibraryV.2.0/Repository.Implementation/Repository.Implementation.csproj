@@ -59,6 +59,7 @@
     <Compile Include="ImplementationClasses\BookToTagsRepository.cs" />
     <Compile Include="ImplementationClasses\Repository.cs" />
     <Compile Include="ImplementationClasses\RoleRepository.cs" />
+    <Compile Include="ImplementationClasses\SessionProvider.cs" />
     <Compile Include="ImplementationClasses\TagRepository.cs" />
     <Compile Include="ImplementationClasses\UserRepository.cs" />
     <Compile Include="ImplementationClasses\UserToRoleRepository.cs" />

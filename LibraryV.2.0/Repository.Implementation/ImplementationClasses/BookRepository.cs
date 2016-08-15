@@ -9,6 +9,10 @@ namespace Repository.Implementation.ImplementationClasses
 {
     public class BookRepository : Repository<Book>, IBookRepository
     {
+        public BookRepository(ISessionProvider sessionProvider) : base(sessionProvider)
+        {
+        }
+
         public void ModifyBook(Book book)
         {
             throw new System.NotImplementedException();

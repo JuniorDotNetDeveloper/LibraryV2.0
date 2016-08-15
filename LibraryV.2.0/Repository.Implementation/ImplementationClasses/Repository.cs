@@ -7,10 +7,14 @@ namespace Repository.Implementation.ImplementationClasses
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        protected readonly ISession _session = SessionGenerator.Instance.GetSession();
+        protected readonly ISession _session;
+
+        public Repository(ISessionProvider sessionProvider)
+        {
+            _session = sessionProvider._Session;
+        }
 
         public IEnumerable Collection { get; }
-
 
         public void Delete(TEntity entity) 
         {
