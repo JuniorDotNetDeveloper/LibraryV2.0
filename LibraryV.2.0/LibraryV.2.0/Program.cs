@@ -27,16 +27,19 @@ namespace LibraryV._2._0
             var bookToTagRepository = ServiceLocator.Resolver<IBookToTagsRepository>();
 
 
-
+            bookRepository.GetAllGroupedBookByCategoryName("It literature");
+            bookRepository.GetAuthorsInOneCatgory();
+            authorRepository.GetAuthorsWithSpecifyCategory("Drama");
+            
 
             //var allReadedBooks = userRepository.GetAllReadedBooks();
             //var getCurrentBooks = userRepository.GetCurrentBooks(1);
             //var getBooks = bookRepository.GetAllBooks();
 
             //var category = bookCategoryRepository.GetById(4);
-            ////var author = authorRepository.GetById(4);
-            //var author = new Author("test112", "test12");
-            //var book1 = new Book("C# for dummies authors", new DateTime(2009, 01, 01), category, new List<Author> { author });
+            ////var Author = authorRepository.GetById(4);
+            //var Author = new Author("test112", "test12");
+            //var book1 = new Book("C# for dummies authors", new DateTime(2009, 01, 01), category, new List<Author> { Author });
             //bookRepository.AddNewBook(book1);
 
 
@@ -47,15 +50,15 @@ namespace LibraryV._2._0
             //InsertTags(bookToTagRepository, bookRepository);
 
 
-            //var author = authorRepository.GetById(6);
+            //var Author = authorRepository.GetById(6);
 
 
             //var book = new Book("testBook22", new DateTime(2012, 08, 21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { new Author("vaim2", "vadi2") });
             //bookRepository.Save(book);
 
-            //var author = authorRepository.GetById(5);
-            ////authorRepository.MakeDetached(author);
-            //var book1 = new Book("Pro C# 5.0 and the .NET 4.5 Framework, edition 6", new DateTime(2012, 08, 21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { author }, "This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering the important new features that make .NET 4.5 the most comprehensive release yet.");
+            //var Author = authorRepository.GetById(5);
+            ////authorRepository.MakeDetached(Author);
+            //var book1 = new Book("Pro C# 5.0 and the .NET 4.5 Framework, edition 6", new DateTime(2012, 08, 21), bookCategoryRepository.GetByCategoryName(".net"), new List<Author> { Author }, "This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering the important new features that make .NET 4.5 the most comprehensive release yet.");
             //bookRepository.Save(book1);
 
 
@@ -310,13 +313,13 @@ namespace LibraryV._2._0
         //    foreach (var book in books)
         //    {
         //        bookRepository.Save(book);
-        //        //var authorToBookEntity = new AuthorToBook(book: book, author: book.Authors.First());
+        //        //var authorToBookEntity = new AuthorToBook(book: book, Author: book.Authors.First());
         //        //authorToBookRepository.Save(authorToBookEntity);
         //    }
 
-        //    foreach (var author in authorList)
+        //    foreach (var Author in authorList)
         //    {
-        //        authorRepository.Save(author);
+        //        authorRepository.Save(Author);
         //    }
 
 

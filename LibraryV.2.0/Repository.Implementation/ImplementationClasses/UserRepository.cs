@@ -11,7 +11,7 @@ namespace Repository.Implementation.ImplementationClasses
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public UserRepository(ISessionProvider sessionProvider) : base(sessionProvider)
+        public UserRepository(ISessionProvider session) : base(session)
         {
         }
 
@@ -57,7 +57,6 @@ namespace Repository.Implementation.ImplementationClasses
                         .SelectGroup(u => userAlias.FirstName).WithAlias(() => usersReadedAllias.FirstName)
                         .SelectGroup(u => userAlias.LastName).WithAlias(() => usersReadedAllias.LastName)
                         .SelectCount(c => rentAlias.Id).WithAlias(() => usersReadedAllias.BookCount)
-
                 )
                 .TransformUsing(Transformers.AliasToBean<UsersReadedBooks>());
 
@@ -88,6 +87,7 @@ namespace Repository.Implementation.ImplementationClasses
             */
         }
 
+        
 
     }
 }
