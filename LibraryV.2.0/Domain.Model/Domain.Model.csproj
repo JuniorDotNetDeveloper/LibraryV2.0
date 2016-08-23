@@ -49,6 +49,7 @@
     <Compile Include="Models\BookCategory.cs" />
     <Compile Include="Models\BookToTags.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Cover.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\RentBook.cs" />
     <Compile Include="Models\RentBookDetails.cs" />

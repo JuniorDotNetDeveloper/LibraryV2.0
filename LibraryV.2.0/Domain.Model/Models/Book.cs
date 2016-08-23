@@ -9,6 +9,7 @@ namespace Domain.Model.Models
         public virtual string Name { get; protected set; }
         public virtual DateTime PublicationDate { get; protected set; }
         public virtual BookCategory Category { get; protected set; }
+        public virtual Cover BookCover { get; set; }
         public virtual string Description { get; set; }
         public virtual BookStatus Status { get; set; } = BookStatus.Free;
         public virtual DeveloperLevel FilterLevel { get; set; } = DeveloperLevel.Beginner;
