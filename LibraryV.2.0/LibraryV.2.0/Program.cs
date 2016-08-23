@@ -13,18 +13,18 @@ namespace LibraryV._2._0
         static Program()
         {
             NHibernateProfiler.Initialize();
-            ServiceLocator.RegisterAll();
+            //ServiceLocator.RegisterAll();
         }
         static void Main(string[] args)
         {
-            var bookRepository = ServiceLocator.Resolver<IBookRepository>();
-            var authorRepository = ServiceLocator.Resolver<IAuthorRepository>();
-            var authorToBookRepository = ServiceLocator.Resolver<IAuthorToBookRepository>();
-            var userRepository = ServiceLocator.Resolver<IUserRepository>();
+            var bookRepository = ServiceLocator.Get<IBookRepository>();
+            var authorRepository = ServiceLocator.Get<IAuthorRepository>();
+            var authorToBookRepository = ServiceLocator.Get<IAuthorToBookRepository>();
+            var userRepository = ServiceLocator.Get<IUserRepository>();
             //var roleRepository = ServiceLocator.Resolver<IRoleRepository>();
-            var userToRoleRepository = ServiceLocator.Resolver<IUserToRoleRepository>();
-            var bookCategoryRepository = ServiceLocator.Resolver<IBookCategoryRepository>();
-            var bookToTagRepository = ServiceLocator.Resolver<IBookToTagsRepository>();
+            var userToRoleRepository = ServiceLocator.Get<IUserToRoleRepository>();
+            var bookCategoryRepository = ServiceLocator.Get<IBookCategoryRepository>();
+            var bookToTagRepository = ServiceLocator.Get<IBookToTagsRepository>();
 
 
             bookRepository.GetAllGroupedBookByCategoryName("It literature");

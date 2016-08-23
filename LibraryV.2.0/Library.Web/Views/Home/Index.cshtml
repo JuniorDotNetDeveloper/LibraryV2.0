@@ -1,6 +1,12 @@
-﻿
+﻿@using Domain.Model.Models;
+@model IList<Book>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+    @foreach (var book in Model)
+    {
+        <p>@book.Name</p>
+    }

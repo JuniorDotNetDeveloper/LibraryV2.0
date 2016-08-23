@@ -1,31 +1,41 @@
-﻿using Ninject.Extensions.Conventions;
-using Ninject;
-using Repository.Abstraction.Interfaces;
+﻿using Repository.Abstraction.Interfaces;
 using Repository.Implementation.ImplementationClasses;
-using System.Reflection;
 using Domain.Model.Models;
+using Castle.MicroKernel;
+using Castle.MicroKernel.Registration;
+using System.Reflection;
+using NHibernate.Util;
+using System.Linq;
 
 namespace Infrastructure
 {
     internal static class ServiceLocator
     {
-        private static readonly IKernel _kernel = new StandardKernel();
+        private static IKernel _kernel;
 
-        public static void RegisterAll()
+        public static void RegisterAll(IKernel kernel)
         {
-            _kernel.Bind<ISessionProvider>().To<SessionProvider>().InThreadScope();
-            _kernel.Bind(x =>
-            {
-                x.From("Repository.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
-                //.FromThisAssembly() // Scans currently assembly
-                .SelectAllClasses().InNamespaceOf<Repository<Entity>>() // Retrieve all non-abstract classes
-                .Join.From("Repository.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
-                .SelectAllClasses().InheritedFrom<IRepository<Entity>>().Excluding<SessionProvider>()
+            _kernel = kernel;
+            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerThread());
 
-                .BindDefaultInterface() // Binds the default interface to them;
-            ;
-            });
+            //_kernel.Bind(x =>
+            //{
+            //    x.From("Repository.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
+            //    .SelectAllClasses().InNamespaceOf<Repository<Entity>>() // Retrieve all non-abstract classes
+            //    .Join.From("Repository.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
+            //    .SelectAllClasses().InheritedFrom<IRepository<Entity>>().Excluding<SessionProvider>()
 
+            //    .BindDefaultInterface(); // Binds the default interface to them;
+
+            //});
+
+            var interfaces = Assembly.Load("Repository.Abstraction").GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
+
+            _kernel.Register(Classes
+                .FromAssemblyNamed("Repository.Implementation")
+                .Where(x => x.GetInterfaces().Intersect(interfaces).Any())
+                .LifestyleTransient()
+                .WithService.DefaultInterfaces());
 
 
 
@@ -41,6 +51,6 @@ namespace Infrastructure
 
 
 
-        public static T Resolver<T>() => _kernel.Get<T>();
+        public static T Get<T>() => _kernel.Resolve<T>();
     }
 }

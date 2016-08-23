@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Model.Models
 {
@@ -6,5 +7,7 @@ namespace Domain.Model.Models
     {
         public virtual IList<Book> Books{ get; set; }
 
+        [Obsolete]
+        protected Cover() {}
     }
 }
