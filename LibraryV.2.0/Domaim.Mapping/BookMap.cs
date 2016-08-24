@@ -9,7 +9,7 @@
             Map(x => x.Name).UniqueKey("UQ_Book").Not.Nullable();
             Map(x => x.PublicationDate).Not.Nullable();
             Map(x => x.Description).Length(1000);
-            References(x => x.BookCover);
+            Map(x => x.CoverLink);
             Map(x => x.Rating);
             Map(x => x.Status).Not.Nullable();
             Map(x => x.FilterLevel).Not.Nullable();

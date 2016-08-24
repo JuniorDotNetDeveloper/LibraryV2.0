@@ -30,7 +30,7 @@ namespace LibraryV._2._0
             bookRepository.GetAllGroupedBookByCategoryName("It literature");
             bookRepository.GetAuthorsInOneCatgory();
             authorRepository.GetAuthorsWithSpecifyCategory("Drama");
-            
+
 
             //var allReadedBooks = userRepository.GetAllReadedBooks();
             //var getCurrentBooks = userRepository.GetCurrentBooks(1);
@@ -44,10 +44,10 @@ namespace LibraryV._2._0
 
 
 
-            //InertUsersAnsRoles(userToRoleRepository);
-            //InsertCategories(bookCategoryRepository);
-            //InsertBooksAndAuthors(bookRepository, bookCategoryRepository);
-            //InsertTags(bookToTagRepository, bookRepository);
+            InertUsersAnsRoles(userToRoleRepository);
+            InsertCategories(bookCategoryRepository);
+            InsertBooksAndAuthors(bookRepository, bookCategoryRepository);
+            InsertTags(bookToTagRepository, bookRepository);
 
 
             //var Author = authorRepository.GetById(6);

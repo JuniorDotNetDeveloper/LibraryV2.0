@@ -13,6 +13,20 @@ namespace Infrastructure
     {
         private static IKernel _kernel;
 
+        public static void RegisterAll()
+        {
+            
+            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerThread());
+
+            var interfaces = Assembly.Load(typeof(IRoleRepository).Assembly.FullName).GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
+
+            _kernel.Register(Classes
+                .FromAssemblyNamed("Repository.Implementation")
+                .Where(x => x.GetInterfaces().Intersect(interfaces).Any())
+                .LifestyleTransient()
+                .WithService.DefaultInterfaces());
+        }
+
         public static void RegisterAll(IKernel kernel)
         {
             _kernel = kernel;
@@ -29,7 +43,8 @@ namespace Infrastructure
 
             //});
 
-            var interfaces = Assembly.Load("Repository.Abstraction").GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
+            //var interfaces = Assembly.Load("Repository.Abstraction").GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
+            var interfaces = Assembly.Load(typeof(IRoleRepository).Assembly.FullName).GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
 
             _kernel.Register(Classes
                 .FromAssemblyNamed("Repository.Implementation")

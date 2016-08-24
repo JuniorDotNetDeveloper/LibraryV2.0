@@ -20,4 +20,10 @@ textarea {
     background-color: skyblue;
 }
 
+.description {
+    width: 350px; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
 

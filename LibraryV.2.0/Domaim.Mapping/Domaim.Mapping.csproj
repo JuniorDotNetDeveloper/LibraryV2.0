@@ -59,7 +59,6 @@
     <Compile Include="BookToTagsMap.cs" />
     <Compile Include="CommentMap.cs" />
     <Compile Include="Conventions\ForeignKeyConvention.cs" />
-    <Compile Include="CoverMap.cs" />
     <Compile Include="EntityMap.cs" />
     <Compile Include="RentBookDetailsMap.cs" />
     <Compile Include="RentBookMap.cs" />
