@@ -60,6 +60,7 @@
     <Compile Include="CommentMap.cs" />
     <Compile Include="Conventions\ForeignKeyConvention.cs" />
     <Compile Include="EntityMap.cs" />
+    <Compile Include="RatingLogMap.cs" />
     <Compile Include="RentBookDetailsMap.cs" />
     <Compile Include="RentBookMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

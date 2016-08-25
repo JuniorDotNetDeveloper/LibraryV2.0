@@ -27,3 +27,20 @@ textarea {
     overflow: hidden;
 }
 
+/* next classes are rewrited because of hidden scrollbar */
+.modal-open {
+    overflow: hidden;
+    overflow-y: hidden;
+}
+.modal{
+    overflow-y: hidden;
+}
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+    margin-right: 0;
+}
+
+/* above classes are rewrited because of hidden scrollbar */
+
+.cursor-pointer{
+    cursor: pointer;
+}

@@ -66,6 +66,6 @@ namespace Infrastructure
 
 
 
-        public static T Get<T>() => _kernel.Resolve<T>();
+        public static T Get<T>() =>     _kernel.Resolve<T>();
     }
 }

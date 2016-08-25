@@ -50,6 +50,7 @@
     <Compile Include="Models\BookToTags.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\RatingLog.cs" />
     <Compile Include="Models\RentBook.cs" />
     <Compile Include="Models\RentBookDetails.cs" />
     <Compile Include="Models\RequestNewBook.cs" />

@@ -7,7 +7,7 @@ namespace Repository.Abstraction.Interfaces
     public interface IRepository<TEntity>
         where TEntity : Entity
     {
-        IEnumerable Collection { get; }
+        IList<TEntity> Collection { get; }
         void Update(TEntity entity);
         void Delete(TEntity entity);
         void Save(TEntity entity);

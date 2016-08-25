@@ -5,6 +5,8 @@ using Domain.Model.Models;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Infrastructure;
 using Repository.Abstraction.Interfaces;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 
 namespace LibraryV._2._0
 {
@@ -13,7 +15,8 @@ namespace LibraryV._2._0
         static Program()
         {
             NHibernateProfiler.Initialize();
-            //ServiceLocator.RegisterAll();
+            var container = new WindsorContainer().Install(FromAssembly.This());
+            ServiceLocator.RegisterAll(container.Kernel);
         }
         static void Main(string[] args)
         {
@@ -25,7 +28,6 @@ namespace LibraryV._2._0
             var userToRoleRepository = ServiceLocator.Get<IUserToRoleRepository>();
             var bookCategoryRepository = ServiceLocator.Get<IBookCategoryRepository>();
             var bookToTagRepository = ServiceLocator.Get<IBookToTagsRepository>();
-
 
             bookRepository.GetAllGroupedBookByCategoryName("It literature");
             bookRepository.GetAuthorsInOneCatgory();
@@ -44,10 +46,10 @@ namespace LibraryV._2._0
 
 
 
-            InertUsersAnsRoles(userToRoleRepository);
-            InsertCategories(bookCategoryRepository);
-            InsertBooksAndAuthors(bookRepository, bookCategoryRepository);
-            InsertTags(bookToTagRepository, bookRepository);
+            //InertUsersAnsRoles(userToRoleRepository);
+            //InsertCategories(bookCategoryRepository);
+            //InsertBooksAndAuthors(bookRepository, bookCategoryRepository);
+            //InsertTags(bookToTagRepository, bookRepository);
 
 
             //var Author = authorRepository.GetById(6);

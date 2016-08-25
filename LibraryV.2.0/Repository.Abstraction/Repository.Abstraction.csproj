@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IBookCategoryRepository.cs" />
     <Compile Include="Interfaces\IBookRepository.cs" />
     <Compile Include="Interfaces\IBookToTagsRepository.cs" />
+    <Compile Include="Interfaces\IRatingLogRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="Interfaces\ISessionProvider.cs" />

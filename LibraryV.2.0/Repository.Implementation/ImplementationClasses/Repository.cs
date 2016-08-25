@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Domain.Model.Models;
 using NHibernate;
 using Repository.Abstraction.Interfaces;
@@ -14,7 +16,7 @@ namespace Repository.Implementation.ImplementationClasses
             _session = sessionProvider._Session;
         }
 
-        public IEnumerable Collection { get; }
+        public IList<TEntity> Collection => _session.QueryOver<TEntity>().List<TEntity>();
 
         public void Delete(TEntity entity) 
         {

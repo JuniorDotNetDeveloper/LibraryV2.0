@@ -57,6 +57,7 @@
     <Compile Include="ImplementationClasses\BookCategoryRepository.cs" />
     <Compile Include="ImplementationClasses\BookRepository.cs" />
     <Compile Include="ImplementationClasses\BookToTagsRepository.cs" />
+    <Compile Include="ImplementationClasses\RatingLogRepository.cs" />
     <Compile Include="ImplementationClasses\Repository.cs" />
     <Compile Include="ImplementationClasses\RoleRepository.cs" />
     <Compile Include="ImplementationClasses\SessionProvider.cs" />

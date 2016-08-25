@@ -15,12 +15,7 @@ namespace Repository.Implementation.ImplementationClasses
         {
         }
 
-                    /*
-            select  b.Name as BookName, a.FirstName, a.LastName, b.CategoryName
-              from Author a, Book b
-              where a.Id = (select bta.AuthorId from BookToAuthor bta
-              where bta.BookId = b.Id)
-            */
+
         public void MakeDetached(Author author)
         {
             _session.Evict(author);
@@ -28,14 +23,7 @@ namespace Repository.Implementation.ImplementationClasses
 
         public IList<AuthorsAndCategoriesDto> GetAuthorsWithSpecifyCategory(string category)
         {
-            /*
-             select distinct a.FirstName, a.LastName --, b.CategoryName 
-                from [Author] a
-                inner join [BookToAuthor] ba on a.Id = ba.AuthorId 
-                inner join [Book] b on ba.BookId = b.Id
-                where b.CategoryName = Any (select CategoryName from [Book] where CategoryName = 'Drama')
 
-            */
             AuthorToBook authorToBookAlies = null;
             Author authorAlies = null;
             Book bookAlies = null;
