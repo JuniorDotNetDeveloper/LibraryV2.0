@@ -18,7 +18,7 @@ namespace Library.Web.Controllers
         }
     
         // GET: Book
-        public ActionResult Index()
+        public ViewResult Index()
         {
             IList<Book> bookDetails = _bookRepository.GetAllBooks();
             var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
@@ -26,13 +26,13 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Details/5
-        public ActionResult Details(int id)
+        public ViewResult Details(int id)
         {
             return View();
         }
 
         // GET: Book/Create
-        public ActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
@@ -54,7 +54,7 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Edit/5
-        public ActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             return View();
         }

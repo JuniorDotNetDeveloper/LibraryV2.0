@@ -34,7 +34,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PublicationDate)
+            @item.PublicationDate.ToShortDateString()
         </td>
         
         <td>
@@ -50,9 +50,11 @@
             @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
-            @Html.ActionLink("Claim", "Claim", new { id=item.Id }) |
-            @Html.ActionLink("Rating", "Rating", new { id=item.Id }) |
-            @Html.ActionLink("Comment", "Comment", new { id=item.Id })
+            <div>
+                @Html.ActionLink("Claim", "Claim", new { id = item.Id }) |
+                @Html.ActionLink("Rating", "Rating", new { id = item.Id }) |
+                @Html.ActionLink("Comment", "Comment", new { id = item.Id })
+            </div>
         </td>
     </tr>
 }
