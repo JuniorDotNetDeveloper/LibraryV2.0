@@ -32,25 +32,16 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Create
-        public ViewResult Create()
+        public PartialViewResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Book/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public PartialViewResult Create(FormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                return PartialView();
         }
 
         // GET: Book/Edit/5

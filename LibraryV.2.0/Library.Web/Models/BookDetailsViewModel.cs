@@ -18,26 +18,8 @@ namespace Library.Web.Models
         public string Description { get; set; }
         public BookStatus Status { get; set; }
         public int? Rating { get; set; }
+        public IList<AuthorViewModel> PersonalBooks { get; } = new List<AuthorViewModel>();
 
-        //public BookDetailsViewModel GetBookDetailsDto(Book book)
-        //{
-        //    if (book == null)
-        //        throw new ArgumentNullException($"{nameof(book)} is null");
 
-        //    BookDetailsViewModel dto = new BookDetailsViewModel();
-        //    dto.BookName = book.Name;
-        //    dto.CoverLink = book.CoverLink;
-        //    dto.Description = book.Description;
-        //    dto.PublicationDate = book.PublicationDate;
-        //    dto.Rating = book.Rating;
-        //    dto.Category = book.Category;
-
-        //    return dto;
-        //}
-
-        //public Book GetDominBook()
-        //{
-        //    Book domainBook = new Book(BookName, PublicationDate, Category, )
-        //}
     }
 }

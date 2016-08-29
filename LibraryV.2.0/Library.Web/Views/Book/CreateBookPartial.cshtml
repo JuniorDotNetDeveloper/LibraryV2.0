@@ -1,13 +1,9 @@
 ﻿@model Library.Web.Models.BookDetailsViewModel
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <h2>Create new Book</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @id = "CreateBookForm" }))
 {
     @Html.AntiForgeryToken()
     
