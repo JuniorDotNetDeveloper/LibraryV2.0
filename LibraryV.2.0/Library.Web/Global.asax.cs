@@ -16,7 +16,8 @@ namespace Library.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-                
+            //BundleTable.EnableOptimizations = true;
+
             var container = new WindsorContainer().Install(FromAssembly.This());
             ServiceLocator.RegisterAll(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link href="@BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+    
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -38,7 +39,8 @@
             <p>&copy; @DateTime.Now.Year - Ownership of the Amdaris Company</p>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/jquery");
-    @*<script src="@BundleTable.Bundles.ResolveBundleUrl("~/bundles/jquery")"></script>*@
+    
+    <script src="@BundleTable.Bundles.ResolveBundleUrl("~/bundles/jquery")"></script>
+    @RenderSection("JqueryUI");
 </body>
 </html>
