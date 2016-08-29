@@ -18,7 +18,7 @@ namespace Library.Web.Models
         public string Description { get; set; }
         public BookStatus Status { get; set; }
         public int? Rating { get; set; }
-        public IList<AuthorViewModel> PersonalBooks { get; } = new List<AuthorViewModel>();
+        //public IList<AuthorViewModel> PersonalBooks { get; } = new List<AuthorViewModel>();
 
 
     }
