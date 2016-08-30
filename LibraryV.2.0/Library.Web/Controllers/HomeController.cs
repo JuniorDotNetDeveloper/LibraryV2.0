@@ -3,20 +3,25 @@ using Repository.Abstraction.Interfaces;
 using System;
 using System.Web.Mvc;
 using System.Linq;
+using Domain.Model.Models;
+using System.Collections.Generic;
+using Library.Web.Models;
 
 namespace Library.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IRatingLogRepository _ratingLogRepository;
-        public HomeController(IRatingLogRepository ratingLogRepository)
+        private IBookRepository _bookRepository;
+        public HomeController(IBookRepository bookRepository)
         {
-            _ratingLogRepository = ratingLogRepository;
+            _bookRepository = bookRepository;
         }
         // GET: Home
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            IList<Book> bookDetails = _bookRepository.GetAllBooks();
+            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
+            return View(bookDetailsViewModel);
         }
 
         //public JsonResult SendRating(string r, string s, string id, string url)

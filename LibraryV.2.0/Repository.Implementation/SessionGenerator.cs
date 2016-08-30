@@ -34,7 +34,7 @@ namespace Repository.Implementation
                                                                                         builder.Database(
                                                                                             "TestDB")
                                                                                                .Server(
-                                                                                                   @"DESKTOP-HJ29MGJ") // DESKTOP-HJ29MGJ // MDDSK40046 
+                                                                                                   @"MDDSK40046") // DESKTOP-HJ29MGJ // MDDSK40046 
                                                                                                .TrustedConnection()))
                                                         .Mappings(CreateMappingConfiguration)
                                                        .ExposeConfiguration(
