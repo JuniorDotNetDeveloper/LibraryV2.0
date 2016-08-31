@@ -1,6 +1,8 @@
 ﻿using Domain.Model.Models;
-using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.Transform;
 using Repository.Abstraction.Interfaces;
+using System.Collections.Generic;
 
 namespace Repository.Implementation.ImplementationClasses
 {
@@ -16,6 +18,19 @@ namespace Repository.Implementation.ImplementationClasses
                 .Where(x => x.CategoryName == name)
                 .SingleOrDefault();
             return category;
+        }
+        public IList<BookCategory>  GetAll()
+        {
+            Book bookAlies = null;
+            
+
+            var categories = _session.QueryOver(() => bookAlies)
+                .SelectList(list => list
+                    .Select(Projections.Distinct(Projections.Property(() => bookAlies.Category))))
+                    .TransformUsing(Transformers.AliasToBean<BookCategory>())
+                    .List<BookCategory>();
+                    
+            return categories;
         }
     }
 }

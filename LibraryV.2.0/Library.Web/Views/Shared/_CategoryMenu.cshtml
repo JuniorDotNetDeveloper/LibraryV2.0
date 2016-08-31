@@ -1,0 +1,14 @@
+﻿
+@using Library.Web.Models;
+@model IEnumerable<BookCategoryViewModel>
+
+<div class="list-group">
+    @foreach (var category in Model){
+        
+        <a href="#" class="list-group-item">@category.CategoryName </a>
+    }
+
+    <a href="#" class="list-group-item">Category 1</a>
+    <a href="#" class="list-group-item">Category 2</a>
+    <a href="#" class="list-group-item">Category 3</a>
+</div>

@@ -12,9 +12,12 @@ namespace Library.Web.Controllers
     public class HomeController : Controller
     {
         private IBookRepository _bookRepository;
-        public HomeController(IBookRepository bookRepository)
+        private IBookCategoryRepository _bookCategoryRepository;
+
+        public HomeController(IBookRepository bookRepository, IBookCategoryRepository bookCategoryRepository)
         {
             _bookRepository = bookRepository;
+            _bookCategoryRepository = bookCategoryRepository;
         }
         // GET: Home
         public ViewResult Index()
@@ -23,7 +26,12 @@ namespace Library.Web.Controllers
             var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
             return View(bookDetailsViewModel);
         }
-
+        public PartialViewResult Category()
+        {
+            IList<BookCategory> categoryList= _bookCategoryRepository.GetAll();
+            var categories = AutoMapper.Mapper.Map<IList<BookCategory>, IList<BookCategoryViewModel>>(categoryList);
+            return PartialView("_CategoryMenu", categories);
+        }
         //public JsonResult SendRating(string r, string s, string id, string url)
         //{
         //    int autoId = 0;

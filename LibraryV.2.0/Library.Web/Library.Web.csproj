@@ -219,6 +219,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthorViewModel.cs" />
+    <Compile Include="Models\BookCategoryViewModel.cs" />
     <Compile Include="Models\BookDetailsViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,6 +241,8 @@
     <Content Include="scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="scripts\jquery-3.1.0.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\DescriptionPartial.cshtml" />
+    <Content Include="Views\Shared\_CategoryMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
