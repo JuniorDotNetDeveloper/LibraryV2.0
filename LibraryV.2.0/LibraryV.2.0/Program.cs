@@ -29,11 +29,14 @@ namespace LibraryV._2._0
             var bookCategoryRepository = ServiceLocator.Get<IBookCategoryRepository>();
             var bookToTagRepository = ServiceLocator.Get<IBookToTagsRepository>();
 
+
+
             //bookRepository.GetAllGroupedBookByCategoryName("It literature");
             //bookRepository.GetAuthorsInOneCatgory();
             //authorRepository.GetAuthorsWithSpecifyCategory("Drama");
 
-            bookCategoryRepository.GetAll();
+            bookRepository.GetAllBooksBycategoryName("IT Literature");
+            bookCategoryRepository.GetByCategoryName("IT Literature");
 
             //var allReadedBooks = userRepository.GetAllReadedBooks();
             //var getCurrentBooks = userRepository.GetCurrentBooks(1);

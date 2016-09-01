@@ -34,7 +34,8 @@ namespace Library.Web.Controllers
         // GET: Book/Create
         public PartialViewResult Create()
         {
-            return PartialView();
+            
+            return PartialView("CreateBookPartial");
         }
 
         // POST: Book/Create

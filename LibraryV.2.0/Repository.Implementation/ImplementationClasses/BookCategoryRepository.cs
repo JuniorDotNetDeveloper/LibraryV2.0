@@ -1,4 +1,5 @@
 ﻿using Domain.Model.Models;
+using Model.Dto.Dto;
 using NHibernate.Criterion;
 using NHibernate.Transform;
 using Repository.Abstraction.Interfaces;
@@ -19,17 +20,28 @@ namespace Repository.Implementation.ImplementationClasses
                 .SingleOrDefault();
             return category;
         }
-        public IList<BookCategory>  GetAll()
+        public IList<CategoryDto>  GetAll()
         {
-            Book bookAlies = null;
-            
+            /*
+                SELECT distinct c.CategoryName as y0_
+                FROM   [Book] this_
+                join BookCategory c on this_.Category_id = c.Id
 
-            var categories = _session.QueryOver(() => bookAlies)
+             */
+
+            Book bookAlies = null;
+            BookCategory category = null;
+            CategoryDto categoryDto = null;
+
+            var categories = _session.QueryOver(() => category)
+                .JoinAlias(() => category.Books, () => bookAlies)
                 .SelectList(list => list
-                    .Select(Projections.Distinct(Projections.Property(() => bookAlies.Category))))
-                    .TransformUsing(Transformers.AliasToBean<BookCategory>())
-                    .List<BookCategory>();
-                    
+                .Select(Projections.Distinct(Projections.Property(() => bookAlies.Category)))
+                .Select(() => category.CategoryName).WithAlias(() => categoryDto.CategoryName))
+                
+                .TransformUsing(Transformers.AliasToBean<CategoryDto>())
+                .List<CategoryDto>();
+
             return categories;
         }
     }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\AuthorsAndCategoriesDto.cs" />
+    <Compile Include="Dto\CategoryDto.cs" />
     <Compile Include="Dto\GroupedByCategoriesBooksDto.cs" />
     <Compile Include="Dto\UsersReadedBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

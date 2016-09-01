@@ -14,5 +14,6 @@ namespace Repository.Abstraction.Interfaces
         IList<Book> GetAllBooks();
         IList<Book> GetAllGroupedBookByCategoryName(string category);
         IList<AuthorsAndCategoriesDto> GetAuthorsInOneCatgory();
+        IList<Book> GetAllBooksBycategoryName(string categoryName);
     }
 }

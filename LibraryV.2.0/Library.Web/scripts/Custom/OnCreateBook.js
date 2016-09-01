@@ -1,10 +1,10 @@
 ﻿$(function () {
-    var createProductLinkSelector = "#createProductLink";
-    var dlgCreateProductSelector = "#dlgCreateProduct";
-    var createProductFormSelector = "#createProductForm";
+    var createProductLinkSelector = "#createBookLink";
+    var dlgCreateProductSelector = "#dlgCreateBook";
+    var createProductFormSelector = "#createBookForm";
 
     $(createProductLinkSelector).click(function () {
-        $.get("http://localhost/Internship.Presentation.MVC/Products/CreateProduct",
+        $.get("http://localhost/Library.Web/Book/Create",
             function (data) {
                 var popup = $(dlgCreateProductSelector);
                 popup.html(data);
@@ -26,4 +26,30 @@
                 popup.dialog('open');
             });
     });
+
+    function IsValidForm(formSelector, context) {
+        ///<summary> Helper method that should be used for inline validation of forms.</summary>
+        if ($.validator && $.validator.unobtrusive) {
+            $(formSelector, context).removeData("validator");
+            $(formSelector, context).removeData("unobtrusiveValidation");
+            $.validator.unobtrusive.parse($(formSelector, context));
+        }
+
+        return $(formSelector, context).valid();
+    }
+    function SaveCreateProductForm() {
+        var createProductForm = $(createProductFormSelector);
+        if (IsValidForm(createProductForm)) {
+            $.ajax({
+                type: "POST",
+                url: createProductForm.attr('action'),
+                data: createProductForm.serialize(),
+                success: function (data) {
+                    alert("saved");
+                }
+            });
+        } else {
+            return false;
+        }
+    }
 });

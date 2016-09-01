@@ -6,6 +6,7 @@ using System.Linq;
 using Domain.Model.Models;
 using System.Collections.Generic;
 using Library.Web.Models;
+using Model.Dto.Dto;
 
 namespace Library.Web.Controllers
 {
@@ -28,9 +29,16 @@ namespace Library.Web.Controllers
         }
         public PartialViewResult Category()
         {
-            IList<BookCategory> categoryList= _bookCategoryRepository.GetAll();
-            var categories = AutoMapper.Mapper.Map<IList<BookCategory>, IList<BookCategoryViewModel>>(categoryList);
+            IList<CategoryDto> categoryList= _bookCategoryRepository.GetAll();
+            var categories = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categoryList);
             return PartialView("_CategoryMenu", categories);
+        }
+        public PartialViewResult ConcreteCategory(string category)
+        {
+
+            IList<Book> result = _bookRepository.GetAllBooksBycategoryName(category);
+            var categoriedBooks = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(result); 
+            return PartialView("BookListPartial",categoriedBooks);
         }
         //public JsonResult SendRating(string r, string s, string id, string url)
         //{

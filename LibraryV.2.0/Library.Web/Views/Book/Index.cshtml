@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    <a class="cursor-pointer" id="createProductLink">Create New</a>
+    <a class="cursor-pointer" id="createBookLink">Create New</a>
 </p>
 <table class="table">
     <tr>
@@ -60,3 +60,9 @@
 }
 
 </table>
+<div id="popupContainer">
+    <div id="dlgCreateBook" class="no-scrollbar"></div>
+</div>
+@section Create {
+    <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnCreate")"></script>
+}

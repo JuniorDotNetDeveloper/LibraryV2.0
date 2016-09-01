@@ -1,11 +1,9 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 20px;
     font-size: 14px;
 }
-h5 {
-    font-style: 
-}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -20,7 +18,7 @@ textarea {
 }
 
 .navbar-default {
-    background-color: skyblue;
+    background-color: skyblue !important;
 }
 
 .description {
@@ -48,4 +46,8 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 .custom-content .display-books  .list-view {
 
+}
+.no-scrollbar {
+
+    overflow-x: hidden !important;
 }

@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link href="@BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
-    
+    <link href="@BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" /> 
+    <link href="@BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/jquery-ui-styles")" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -41,6 +41,7 @@
     </div>
     
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/bundles/jquery")"></script>
-    @*@RenderSection("JqueryUI");*@
+    @RenderSection("Create", required: false);
+    @RenderSection("CategoryMenu", required: false);
 </body>
 </html>

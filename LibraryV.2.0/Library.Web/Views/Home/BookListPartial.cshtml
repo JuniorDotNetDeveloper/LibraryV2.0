@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<Library.Web.Models.BookDetailsViewModel>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3 ">
+            <div class="thumbnail">
+                <img src="@Url.Content(item.CoverLink)" />
+                <div class="caption">
+
+                    <h5>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </h5>
+                    <p class="description">
+
+                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.Partial("DescriptionPartial", item)
+                        <br />
+
+                        <a class="cursor-pointer" data-toggle="modal" data-target="#@item.Id">more...</a>
+                        <button class="btn" href="">claim</button>
+                    </p>
+
+                    <div>
+                        <button class="btn" href="">claim</button>
+                    </div>
+                </div>
+
+                <div class="ratings">
+                    <p class="pull-right">15 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

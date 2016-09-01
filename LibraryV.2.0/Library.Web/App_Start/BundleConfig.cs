@@ -20,14 +20,25 @@ namespace Library.Web.App_Start
 
             Bundle stylesBundle = new Bundle("~/Content/css");
             stylesBundle.Include("~/Content/bootstrap.min.css");
+            stylesBundle.Include("~/Content/shop-homepage.css");
             stylesBundle.Include("~/Content/Site.css");
             bundles.Add(stylesBundle);
 
-            Bundle stylesJqueryUI = new Bundle("~/bundles/jquery-ui");
+            Bundle stylesJqueryUI = new Bundle("~/Content/themes/base/jquery-ui-styles");
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.min.css");
-            stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.structure.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.structure.css");
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.theme.css");
             bundles.Add(stylesJqueryUI);
+
+
+            Bundle onCreateBook = new Bundle("~/scripts/Custom/OnCreate");
+            onCreateBook.Include("~/scripts/Custom/OnCreateBook.js");
+            bundles.Add(onCreateBook);
+
+            Bundle onCategoryMenu = new Bundle("~/scripts/Custom/OnCategoryMenu");
+            onCategoryMenu.Include("~/scripts/Custom/OnCategoryMenu.js");
+            bundles.Add(onCategoryMenu);
+            
 
             BundleTable.EnableOptimizations = true;
         }

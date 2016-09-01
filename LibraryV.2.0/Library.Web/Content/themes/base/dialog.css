@@ -42,7 +42,7 @@
 	border: 0;
 	padding: .5em 1em;
 	background: none;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: left;

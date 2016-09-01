@@ -51,6 +51,18 @@ namespace Repository.Implementation.ImplementationClasses
 	        group by b.Name, b.CategoryName
 	        having b.CategoryName = 'Fantasy'
         */
+        public IList<Book> GetAllBooksBycategoryName(string categoryName)
+        {
+            Book b = null;
+            BookCategory bookCategory = null;
+
+            var bookList = _session.QueryOver(() => b)
+                .JoinAlias(() => b.Category, () => bookCategory)
+                .Where(() => bookCategory.CategoryName == categoryName)
+                .List();
+
+            return bookList;    
+        }
         public IList<Book> GetAllGroupedBookByCategoryName(string category)
         {
             GroupedByCategoriesBooksDto output = null;

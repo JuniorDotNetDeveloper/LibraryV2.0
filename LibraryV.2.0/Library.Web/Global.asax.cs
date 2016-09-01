@@ -1,5 +1,6 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Infrastructure;
 using Library.Web.App_Start;
 using Library.Web.WindsorUtills;
@@ -13,6 +14,7 @@ namespace Library.Web
     {
         protected void Application_Start()
         {
+            NHibernateProfiler.Initialize();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

@@ -1,5 +1,6 @@
 ﻿using Domain.Model.Models;
 using Library.Web.Models;
+using Model.Dto.Dto;
 
 namespace Library.Web.App_Start
 {
@@ -11,7 +12,7 @@ namespace Library.Web.App_Start
             {
                 config.CreateMap<Book, BookDetailsViewModel>();
                 config.CreateMap<Author, AuthorViewModel>();
-                config.CreateMap<BookCategory, BookCategoryViewModel>();
+                config.CreateMap<CategoryDto, BookCategoryViewModel>();
             });
         }
     }
