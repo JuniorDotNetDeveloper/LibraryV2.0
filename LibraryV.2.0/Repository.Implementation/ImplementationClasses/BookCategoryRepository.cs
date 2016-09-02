@@ -20,7 +20,7 @@ namespace Repository.Implementation.ImplementationClasses
                 .SingleOrDefault();
             return category;
         }
-        public IList<CategoryDto>  GetAll()
+        public IList<CategoryDto>  GetNotEmptyCategories()
         {
             /*
                 SELECT distinct c.CategoryName as y0_
@@ -37,10 +37,25 @@ namespace Repository.Implementation.ImplementationClasses
                 .JoinAlias(() => category.Books, () => bookAlies)
                 .SelectList(list => list
                 .Select(Projections.Distinct(Projections.Property(() => bookAlies.Category)))
-                .Select(() => category.CategoryName).WithAlias(() => categoryDto.CategoryName))
+                .Select(() => category.CategoryName).WithAlias(() => categoryDto.CategoryName)
+                .Select(() => category.Id).WithAlias(() => categoryDto.CategoryId))
                 
                 .TransformUsing(Transformers.AliasToBean<CategoryDto>())
                 .List<CategoryDto>();
+
+            return categories;
+        }
+
+        public IList<BookCategory> GetAllCategories()
+        {
+            BookCategory categoryAlies = null;
+
+            var categories = _session.QueryOver(() => categoryAlies)
+                .SelectList(list => list
+                    .Select(x => x.Id).WithAlias(() => categoryAlies.Id)
+                    .Select(x => x.CategoryName).WithAlias(() => categoryAlies.CategoryName))
+                .TransformUsing(Transformers.AliasToBean<BookCategory>())
+                .List();
 
             return categories;
         }

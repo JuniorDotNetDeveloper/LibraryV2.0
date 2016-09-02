@@ -8,6 +8,7 @@ namespace Domaim.Mapping
         {
             Map(x => x.FirstName).Not.Nullable().UniqueKey("UQ_FirstLastName");
             Map(x => x.LastName).Not.Nullable().UniqueKey("UQ_FirstLastName");
+            Map(x => x.FullName);
             HasMany(x => x.PersonalBooks).Cascade.Delete().Inverse();
         }
     }

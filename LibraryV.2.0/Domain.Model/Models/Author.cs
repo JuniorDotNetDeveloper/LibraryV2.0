@@ -7,6 +7,7 @@ namespace Domain.Model.Models
     {
         public virtual string FirstName { get; protected set; }
         public virtual string LastName { get; protected set; }
+        public virtual string FullName { get { return $"{FirstName} {LastName}"; } protected set { } }
         public virtual IList<AuthorToBook> PersonalBooks { get; } = new List<AuthorToBook>();
 
         [Obsolete]

@@ -7,7 +7,8 @@ namespace Repository.Abstraction.Interfaces
     public interface IBookCategoryRepository : IRepository<BookCategory>
     {
         BookCategory GetByCategoryName(string name);
-        IList<CategoryDto> GetAll();
+        IList<CategoryDto> GetNotEmptyCategories();
+        IList<BookCategory> GetAllCategories();
     }
 }
  

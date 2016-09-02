@@ -1,5 +1,6 @@
 ﻿using Domain.Model.Models;
 using Library.Web.Models;
+using Model.Dto.Dto;
 using Repository.Abstraction.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,14 @@ namespace Library.Web.Controllers
     public class BookController : Controller
     {
         private IBookRepository _bookRepository;
-        public BookController(IBookRepository bookRepository)
+        private IBookCategoryRepository _bookCategoryRepository;
+        private IAuthorRepository _authorRepository;
+
+        public BookController(IBookRepository bookRepository, IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository)
         {
+            _authorRepository = authorRepository;
             _bookRepository = bookRepository;
+            _bookCategoryRepository = bookCategoryRepository;
         }
     
         // GET: Book
@@ -35,7 +41,23 @@ namespace Library.Web.Controllers
         public PartialViewResult Create()
         {
             
-            return PartialView("CreateBookPartial");
+            IList<SelectListItem> selectedListCategories = new List<SelectListItem>();
+            var categories = _bookCategoryRepository.GetAllCategories();
+            //var a = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categories);
+            foreach (var cat in categories)
+            {
+                selectedListCategories.Add(new SelectListItem { Text = cat.CategoryName, Value = cat.Id.ToString()});
+            }
+
+            IList<SelectListItem> selectedListAuthors = new List<SelectListItem>();
+            var authors = _authorRepository.Collection;
+            foreach (var author in authors)
+            {
+                selectedListAuthors.Add(new SelectListItem { Text = author.FullName, Value = author.Id.ToString() });
+            }
+            CreateBookViewModel newbook = new CreateBookViewModel(selectedListAuthors, selectedListCategories);
+            
+            return PartialView("CreateBookPartial", newbook);
         }
 
         // POST: Book/Create

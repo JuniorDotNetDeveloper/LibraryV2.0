@@ -29,7 +29,7 @@ namespace Library.Web.Controllers
         }
         public PartialViewResult Category()
         {
-            IList<CategoryDto> categoryList= _bookCategoryRepository.GetAll();
+            IList<CategoryDto> categoryList= _bookCategoryRepository.GetNotEmptyCategories();
             var categories = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categoryList);
             return PartialView("_CategoryMenu", categories);
         }

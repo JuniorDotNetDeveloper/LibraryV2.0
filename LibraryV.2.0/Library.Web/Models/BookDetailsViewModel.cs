@@ -1,5 +1,4 @@
 ﻿using Domain.Model.Common;
-using Domain.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,16 +8,18 @@ namespace Library.Web.Models
     public class BookDetailsViewModel
     {
         public long Id { get; set; }
-        [Display(Name = "Book")]
+        [Display(Name = "Titel")]
         public string Name { get; protected set; }
+        [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; protected set; }
-        public BookCategory Category { get; protected set; }
+        //[Display(Name = "Category")]
+        public BookCategoryViewModel Category { get; protected set; }
         [DataType(DataType.Upload)]
         public string CoverLink { get; set; }
         public string Description { get; set; }
         public BookStatus Status { get; set; }
         public int? Rating { get; set; }
-        //public IList<AuthorViewModel> PersonalBooks { get; } = new List<AuthorViewModel>();
-        
+        public IList<AuthorViewModel> Authors { get; } = new List<AuthorViewModel>();
+
     }
 }
