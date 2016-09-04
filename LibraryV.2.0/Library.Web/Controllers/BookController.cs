@@ -46,8 +46,9 @@ namespace Library.Web.Controllers
             //var a = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categories);
             foreach (var cat in categories)
             {
-                selectedListCategories.Add(new SelectListItem { Text = cat.CategoryName, Value = cat.Id.ToString()});
+                selectedListCategories.Add(new SelectListItem { Text = cat.CategoryName, Value = cat.Id.ToString() });
             }
+            //var d = categories.Select((t, v) => new { Text = t.CategoryName, Value = v });
 
             IList<SelectListItem> selectedListAuthors = new List<SelectListItem>();
             var authors = _authorRepository.Collection;
@@ -62,9 +63,11 @@ namespace Library.Web.Controllers
 
         // POST: Book/Create
         [HttpPost]
-        public PartialViewResult Create(FormCollection collection)
+        public ActionResult Create(CreateBookViewModel newBook)
         {
-                return PartialView();
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         // GET: Book/Edit/5

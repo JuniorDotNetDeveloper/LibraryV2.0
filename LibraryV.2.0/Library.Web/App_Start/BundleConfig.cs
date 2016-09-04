@@ -9,6 +9,7 @@ namespace Library.Web.App_Start
             Bundle scriptBundle = new Bundle("~/bundles/jquery");
             scriptBundle.Include("~/scripts/jquery-{version}.js");
             scriptBundle.Include("~/scripts/jquery.validate*");
+            scriptBundle.Include("~/scripts/jquery.validate.unobtrusive.js");
             scriptBundle.Include("~/scripts/modernizr-*");
             scriptBundle.Include("~/scripts/bootstrap.js", "~/scripts/respond.js");
             scriptBundle.Include("~/scripts/jquery-ui-{version}.js");

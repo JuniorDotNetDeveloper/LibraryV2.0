@@ -8,10 +8,13 @@ namespace Library.Web.Models
     public class CreateBookViewModel
     {
         public long Id { get; set; }
+        [Required]
         [Display(Name = "Titel")]
         public string Name { get; protected set; }
+        [Required]
         [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; protected set; }
+        [Required]
         //[Display(Name = "Category")]
         public IList<SelectListItem> Categories { get; protected set; }
         [DataType(DataType.Upload)]

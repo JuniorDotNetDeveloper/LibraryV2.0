@@ -1,7 +1,9 @@
-﻿$(function () {
+﻿$(document).ready(function () {
     var createProductLinkSelector = "#createBookLink";
     var dlgCreateProductSelector = "#dlgCreateBook";
     var createProductFormSelector = "#createBookForm";
+    
+
 
     $(createProductLinkSelector).click(function () {
         $.get("http://localhost/Library.Web/Book/Create",
@@ -16,7 +18,7 @@
                     modal: true,
                     width: 500,
                     buttons: {
-                        "Create product": SaveCreateProductForm,
+                        "Create": SaveCreateProductForm,
                         Cancel: function () {
                             popup.dialog("close");
                         }
@@ -24,7 +26,11 @@
                 });
 
                 popup.dialog('open');
+                CallDatePicker();
+               
             });
+
+          
     });
 
     function IsValidForm(formSelector, context) {
@@ -37,6 +43,20 @@
 
         return $(formSelector, context).valid();
     }
+
+    function CallDatePicker() {
+        $("#dateselection").datepicker({
+            numberOfMonths: 1,
+            showWeek: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: false,
+            minDate: new Date(2008, 1 - 1, 1),
+            maxDate: new Date(2100, 12 - 1, 31)
+        });
+        $("#dateselection").datepicker("setDate", new Date());
+    }
+
     function SaveCreateProductForm() {
         var createProductForm = $(createProductFormSelector);
         if (IsValidForm(createProductForm)) {
