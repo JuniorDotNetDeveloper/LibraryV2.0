@@ -54,7 +54,10 @@
             <div>
                 @Html.ActionLink("Claim", "Claim", new { id = item.Id }) |
                 @Html.ActionLink("Rating", "Rating", new { id = item.Id }) |
-                @Html.ActionLink("Comment", "Comment", new { id = item.Id })
+                @Html.ActionLink("Comment", "Comment", new { id = item.Id }) |
+                <a id="@item.Id" class="cursor-pointer" onclick="DeleteItem(this)">Delete</a>
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+
             </div>
         </td>
     </tr>
@@ -63,7 +66,10 @@
 </table>
 <div id="popupContainer">
     <div id="dlgCreateBook" class="no-scrollbar"></div>
+    <div id="dlgDeleteBook" class="no-scrollbar"></div>
 </div>
 @section Create {
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnCreate")"></script>
+    <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnDelete")"></script>
 }
+

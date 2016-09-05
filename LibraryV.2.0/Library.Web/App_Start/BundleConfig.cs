@@ -27,14 +27,25 @@ namespace Library.Web.App_Start
 
             Bundle stylesJqueryUI = new Bundle("~/Content/themes/base/jquery-ui-styles");
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.min.css");
-            //stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.structure.css");
+            stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.structure.css");
+
+            stylesJqueryUI.Include("~/Content/themes/base/button.css");
+            stylesJqueryUI.Include("~/Content/themes/base/all.css");
+            stylesJqueryUI.Include("~/Content/themes/base/dialog.css");
+
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.theme.css");
             bundles.Add(stylesJqueryUI);
 
 
             Bundle onCreateBook = new Bundle("~/scripts/Custom/OnCreate");
             onCreateBook.Include("~/scripts/Custom/OnCreateBook.js");
+            onCreateBook.Include("~/scripts/Custom/datepicker.js");
             bundles.Add(onCreateBook);
+
+            Bundle OnDeleteItem = new Bundle("~/scripts/Custom/OnDelete");
+            onCreateBook.Include("~/scripts/Custom/OnDeleteItem.js");
+            bundles.Add(onCreateBook);
+            
 
             Bundle onCategoryMenu = new Bundle("~/scripts/Custom/OnCategoryMenu");
             onCategoryMenu.Include("~/scripts/Custom/OnCategoryMenu.js");

@@ -10,6 +10,7 @@ namespace Repository.Abstraction.Interfaces
         IList<TEntity> Collection { get; }
         void Update(TEntity entity);
         void Delete(TEntity entity);
+        void DeleteById(long bookId);
         void Save(TEntity entity);
         TEntity GetById(long id);
     }

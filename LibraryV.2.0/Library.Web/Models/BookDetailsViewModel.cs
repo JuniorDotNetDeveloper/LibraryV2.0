@@ -8,12 +8,16 @@ namespace Library.Web.Models
     public class BookDetailsViewModel
     {
         public long Id { get; set; }
+
         [Display(Name = "Titel")]
         public string Name { get; protected set; }
+
         [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; protected set; }
+
         //[Display(Name = "Category")]
         public BookCategoryViewModel Category { get; protected set; }
+
         [DataType(DataType.Upload)]
         public string CoverLink { get; set; }
         public string Description { get; set; }

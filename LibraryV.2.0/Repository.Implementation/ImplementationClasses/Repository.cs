@@ -27,6 +27,16 @@ namespace Repository.Implementation.ImplementationClasses
             }
         }
 
+        public void DeleteById(long bookId)
+        {
+            using (ITransaction transaction = _session.BeginTransaction())
+            {
+                var entityt = GetById(bookId);
+                _session.Delete(entityt);
+                transaction.Commit();
+            }
+        }
+
         public void Save(TEntity entity)
         {
             using (ITransaction transaction = _session.BeginTransaction())

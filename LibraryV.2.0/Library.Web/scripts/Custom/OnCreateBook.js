@@ -44,19 +44,6 @@
         return $(formSelector, context).valid();
     }
 
-    function CallDatePicker() {
-        $("#dateselection").datepicker({
-            numberOfMonths: 1,
-            showWeek: true,
-            changeMonth: true,
-            changeYear: true,
-            showButtonPanel: false,
-            minDate: new Date(2008, 1 - 1, 1),
-            maxDate: new Date(2100, 12 - 1, 31)
-        });
-        $("#dateselection").datepicker("setDate", new Date());
-    }
-
     function SaveCreateProductForm() {
         var createProductForm = $(createProductFormSelector);
         if (IsValidForm(createProductForm)) {
@@ -66,10 +53,13 @@
                 data: createProductForm.serialize(),
                 success: function (data) {
                     alert("saved");
+                    location.reload();
                 }
             });
         } else {
             return false;
         }
     }
+
+    
 });

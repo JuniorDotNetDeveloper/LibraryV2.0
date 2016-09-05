@@ -8,19 +8,36 @@ namespace Library.Web.Models
     public class CreateBookViewModel
     {
         public long Id { get; set; }
+
         [Required]
         [Display(Name = "Titel")]
-        public string Name { get; protected set; }
+        public string Name { get;  set; }
+
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Publication Date")]
-        public DateTime PublicationDate { get; protected set; }
+        public DateTime PublicationDate { get; set; }
+        
+        [Display(Name = "Category")]
+        public IList<SelectListItem> SelectItemListCategories { get; set; }
+
         [Required]
-        //[Display(Name = "Category")]
-        public IList<SelectListItem> Categories { get; protected set; }
+        public long SelectedCategory { get; set; }
+        public BookCategoryViewModel Category { get; set; }
+
         [DataType(DataType.Upload)]
         public string CoverLink { get; set; }
         public string Description { get; set; }
-        public IList<SelectListItem> Authors { get; } = new List<SelectListItem>();
+
+        public IList<SelectListItem> SelectListAuthors { get; set; }
+
+        [Required]
+        public IList<long> SelectedAuthor { get; set; }
+        public IList<AuthorViewModel> Authors { get; set; }
+
+        [Obsolete]
+        public CreateBookViewModel() {}
 
         public CreateBookViewModel(IList<SelectListItem> authors, IList<SelectListItem> categories)
         {
@@ -28,14 +45,14 @@ namespace Library.Web.Models
                 throw new ArgumentNullException($"{nameof(authors)} is null");
             if (categories == null)
                 throw new ArgumentNullException($"{nameof(categories)} is null");
-            Authors = authors;
-            Categories = categories;
+            SelectListAuthors = authors;
+            SelectItemListCategories = categories;
         }
-        public void SetCategories (IList<SelectListItem> categories)
+        public void SetCategories(IList<SelectListItem> categories)
         {
             if (categories == null)
                 throw new ArgumentNullException($"{nameof(categories)} is null");
-            Categories = categories;
+            SelectItemListCategories = categories;
         }
     }
 }

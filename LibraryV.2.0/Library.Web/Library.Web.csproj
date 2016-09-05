@@ -199,6 +199,7 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\Custom\datepicker.js" />
     <Content Include="scripts\Custom\OnCategoryMenu.js" />
     <Content Include="scripts\Custom\OnCreateBook.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -210,6 +211,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="scripts\Custom\OnDeleteItem.js" />
     <Content Include="scripts\jquery-3.1.0.js" />
     <Content Include="scripts\jquery-3.1.0.min.js" />
     <Content Include="scripts\jquery-3.1.0.slim.js" />
@@ -261,6 +263,7 @@
     <Content Include="Views\Home\DescriptionPartial.cshtml" />
     <Content Include="Views\Shared\_CategoryMenu.cshtml" />
     <Content Include="Views\Home\BookListPartial.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

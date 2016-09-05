@@ -48,7 +48,7 @@ namespace Library.Web.Controllers
             {
                 selectedListCategories.Add(new SelectListItem { Text = cat.CategoryName, Value = cat.Id.ToString() });
             }
-            //var d = categories.Select((t, v) => new { Text = t.CategoryName, Value = v });
+            //var d = categories.Select((t, v) => new  SelectListItem { Text = t.CategoryName, Value = v });
 
             IList<SelectListItem> selectedListAuthors = new List<SelectListItem>();
             var authors = _authorRepository.Collection;
@@ -63,10 +63,18 @@ namespace Library.Web.Controllers
 
         // POST: Book/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateBookViewModel newBook)
         {
+
+            var categories = _bookCategoryRepository.GetById(newBook.SelectedCategory);
+            var authors = _authorRepository.Collection.Where(x => newBook.SelectedAuthor.Contains<long>(x.Id)).ToList();
             if (!ModelState.IsValid)
                 return RedirectToAction("Index");
+
+            var cat = _bookCategoryRepository.Collection.Single(x => x.Id == newBook.SelectedCategory);
+
+            _bookRepository.AddNewBook(new Book(newBook.Name, newBook.PublicationDate, cat, authors));
             return RedirectToAction("Index");
         }
 
@@ -93,17 +101,21 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Delete/5
-        public ActionResult Delete(int id)
+        public PartialViewResult Delete(long id)
         {
-            return View();
+            var bookDomain = _bookRepository.GetById(id);
+            var bookViewModel = AutoMapper.Mapper.Map<Book, BookDetailsViewModel>(bookDomain);
+            return PartialView(bookViewModel);
         }
 
         // POST: Book/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
+                if (_bookRepository.GetById(id) != null)
+                    _bookRepository.DeleteById(id);
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
