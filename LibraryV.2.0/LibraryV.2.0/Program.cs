@@ -123,11 +123,11 @@ namespace LibraryV._2._0
         }
         private static void InertUsersAnsRoles(IUserToRoleRepository userToRoleRepository)
         {
-            var user1 = new User("Vadim", "Abdullaev", "password", "Abdullaev@email");
+            var user1 = new User("Vadim", "Abdullaev",  "Abdullaev@email");
             //userRepository.Save(user1);
-            var user2 = new User("Jon", "Willson", "password", "Willson@email");
+            var user2 = new User("Jon", "Willson",  "Willson@email");
             //userRepository.Save(user2);
-            var user3 = new User("Serge", "Ibaka", "password", "Ibaka@email");
+            var user3 = new User("Serge", "Ibaka", "Ibaka@email");
             //userRepository.Save(user3);
 
             var roleAdmin = new Role("Admin");

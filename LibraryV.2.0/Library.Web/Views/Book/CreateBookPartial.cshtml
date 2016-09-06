@@ -22,7 +22,7 @@
             @Html.LabelFor(model => model.SelectListAuthors, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.SelectedAuthor, Model.SelectListAuthors, new { @class = "form-control", @multiple = "multiple" } )
-                @Html.ValidationMessageFor(model => model.SelectListAuthors, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.SelectedAuthor, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +38,7 @@
             @Html.LabelFor(model => model.SelectItemListCategories, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.SelectedCategory, Model.SelectItemListCategories,  new { @class = "form-control" } )
-                @Html.ValidationMessageFor(model => model.SelectItemListCategories, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.SelectedCategory, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

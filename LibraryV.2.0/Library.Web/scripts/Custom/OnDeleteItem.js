@@ -8,7 +8,6 @@ function DeleteItem(obj) {
         data: { id: $(currentBook).attr("id") },
         success: function (response) {
             dialogPopup(response)
-            debugger;
         },
 
         error: function (xhr) {
@@ -42,10 +41,9 @@ function dialogPopup(data) {
 
 function Delete() {
     var id = $("#bookId");
-    debugger;
 
     $.ajax({
-        url: "http://localhost/Library.Web/Book/Delete",
+        url: "http://localhost/Library.Web/Book/ConfirmDelete",
         type: "post", //send it through get method
         data: { id: id.attr("value") },
         success: function (response) {

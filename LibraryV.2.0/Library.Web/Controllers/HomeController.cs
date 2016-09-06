@@ -35,11 +35,18 @@ namespace Library.Web.Controllers
         }
         public PartialViewResult ConcreteCategory(string category)
         {
-
             IList<Book> result = _bookRepository.GetAllBooksBycategoryName(category);
             var categoriedBooks = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(result); 
-            return PartialView("BookListPartial",categoriedBooks);
+            return PartialView("BookListPartial", categoriedBooks);
         }
+        public PartialViewResult AllCategories()
+        {
+            IList<Book> bookDetails = _bookRepository.GetAllBooks();
+            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
+            return PartialView("BookListPartial", bookDetailsViewModel);
+        }
+
+        #region rating implementation
         //public JsonResult SendRating(string r, string s, string id, string url)
         //{
         //    int autoId = 0;
@@ -140,5 +147,6 @@ namespace Library.Web.Controllers
         //    }
         //    return Json("<br />You rated " + r + " star(s), thanks !");
         //}
+        #endregion
     }
 }

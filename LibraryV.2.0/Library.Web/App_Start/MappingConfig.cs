@@ -15,6 +15,7 @@ namespace Library.Web.App_Start
                 config.CreateMap<BookCategory, BookCategoryViewModel>();
                 config.CreateMap<Author, AuthorViewModel>();
                 config.CreateMap<CategoryDto, BookCategoryViewModel>();
+                config.CreateMap<User, LogOnViewModel>();
             });
         }
     }

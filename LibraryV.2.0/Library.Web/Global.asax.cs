@@ -3,6 +3,7 @@ using Castle.Windsor.Installer;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Infrastructure;
 using Library.Web.App_Start;
+using Library.Web.Filters;
 using Library.Web.WindsorUtills;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +19,7 @@ namespace Library.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             //BundleTable.EnableOptimizations = true;
 
             var container = new WindsorContainer().Install(FromAssembly.This());

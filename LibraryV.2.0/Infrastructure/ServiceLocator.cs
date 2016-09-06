@@ -30,7 +30,7 @@ namespace Infrastructure
         public static void RegisterAll(IKernel kernel)
         {
             _kernel = kernel;
-            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerThread());
+            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerWebRequest());
 
             //_kernel.Bind(x =>
             //{
@@ -66,6 +66,6 @@ namespace Infrastructure
 
 
 
-        public static T Get<T>() =>     _kernel.Resolve<T>();
+        public static T Get<T>() => _kernel.Resolve<T>();
     }
 }

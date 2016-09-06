@@ -1,0 +1,12 @@
+var connection = new LdapConnection("adservermd.amdaris.net");
+                var credential = new NetworkCredential(model.Username, model.Password);
+                connection.Credential = credential;
+                connection.Bind();
+// --------------------------------------------------------------------------------------------------------
+                var entry = new DirectoryEntry("LDAP://amdaris", model.Username, model.Password);
+                object nativeObject = entry.NativeObject;
+
+                var search = new DirectorySearcher(entry);
+                search.Filter = "(SAMAccountName=" + username + ")";
+                SearchResult result = search.FindOne();
+                var name = (string) result.Properties["cn"][0];

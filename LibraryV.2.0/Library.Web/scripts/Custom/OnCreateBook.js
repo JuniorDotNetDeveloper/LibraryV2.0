@@ -52,7 +52,6 @@
                 url: createProductForm.attr('action'),
                 data: createProductForm.serialize(),
                 success: function (data) {
-                    alert("saved");
                     location.reload();
                 }
             });

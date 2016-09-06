@@ -25,6 +25,7 @@ textarea {
     text-overflow: ellipsis; 
     white-space: nowrap;
     overflow: hidden;
+    max-width: 300px;
 }
 
 /* next classes are rewrited because of hidden scrollbar */

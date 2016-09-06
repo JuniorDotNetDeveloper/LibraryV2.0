@@ -9,7 +9,7 @@ namespace Domaim.Mapping
             Map(x => x.UserName).Not.Nullable().UniqueKey("UQ_FirstLastName");
             Map(x => x.FirstName).Not.Nullable().UniqueKey("UQ_FirstLastName");
             Map(x => x.LastName).Not.Nullable().UniqueKey("UQ_FirstLastName");
-            Map(x => x.Password).Not.Nullable();
+            //Map(x => x.Password).Not.Nullable();
             Map(x => x.Email).Not.Nullable().Unique();
             Map(x => x.TelephoneNumber);
 

@@ -2,9 +2,10 @@
 @model IEnumerable<BookCategoryViewModel>
 
 <div id="categoryMenu" class="list-group">
-    @foreach (var category in Model){
+    <a id="allBooks" class="list-group-item" onclick="allCategoryBooks()">All Books</a>
+    @foreach (var category in Model){ 
         
-        <a id="@category.CategoryName" onclick="booksByCategory(this)" href="#" class="list-group-item">@category.CategoryName</a>
+        <a id="@category.CategoryName" onclick="booksByCategory(this)" class="list-group-item" itemscope="/Library.Web/Home/ConcreteCategory">@category.CategoryName</a>
     }
 
 </div>

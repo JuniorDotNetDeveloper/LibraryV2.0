@@ -1,15 +1,14 @@
 ﻿using Domain.Model.Models;
+using Library.Web.Filters;
 using Library.Web.Models;
-using Model.Dto.Dto;
 using Repository.Abstraction.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Library.Web.Controllers
 {
+    //[Authorize]
     public class BookController : Controller
     {
         private IBookRepository _bookRepository;
@@ -38,6 +37,8 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Create
+        
+        [AjaxOrChildActionOnly]
         public PartialViewResult Create()
         {
             
@@ -64,6 +65,7 @@ namespace Library.Web.Controllers
         // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AjaxOrChildActionOnly]
         public ActionResult Create(CreateBookViewModel newBook)
         {
 
@@ -79,6 +81,8 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Edit/5
+        [AjaxOrChildActionOnly]
+        [ValidateAntiForgeryToken]
         public ViewResult Edit(int id)
         {
             return View();
@@ -86,6 +90,7 @@ namespace Library.Web.Controllers
 
         // POST: Book/Edit/5
         [HttpPost]
+        [AjaxOrChildActionOnly]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -101,6 +106,7 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Delete/5
+        [AjaxOrChildActionOnly]
         public PartialViewResult Delete(long id)
         {
             var bookDomain = _bookRepository.GetById(id);
@@ -110,7 +116,7 @@ namespace Library.Web.Controllers
 
         // POST: Book/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult ConfirmDelete(long id)
         {
             try
             {

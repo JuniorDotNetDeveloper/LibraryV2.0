@@ -63,6 +63,12 @@ namespace Repository.Implementation.ImplementationClasses
             return usersWithBooks.List<UsersReadedBooks>();
         }
 
+        public User GetByName(string Username)
+        {
+            var user = _session.QueryOver<User>().Where(x => x.UserName == Username).SingleOrDefault();
+            return user;
+        }
+
         public IList<Book> GetCurrentBooks(long userId)
         {
             Book book= null;

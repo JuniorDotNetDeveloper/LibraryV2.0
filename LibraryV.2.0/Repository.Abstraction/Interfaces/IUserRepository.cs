@@ -8,5 +8,7 @@ namespace Repository.Abstraction.Interfaces
     {
         IList<Book> GetCurrentBooks(long userId);
         IList<UsersReadedBooks> GetAllReadedBooks();
+
+        User GetByName(string Username);
     }
 }

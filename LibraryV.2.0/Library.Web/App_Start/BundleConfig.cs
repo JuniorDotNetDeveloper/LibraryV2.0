@@ -44,7 +44,7 @@ namespace Library.Web.App_Start
 
             Bundle OnDeleteItem = new Bundle("~/scripts/Custom/OnDelete");
             onCreateBook.Include("~/scripts/Custom/OnDeleteItem.js");
-            bundles.Add(onCreateBook);
+            bundles.Add(OnDeleteItem);
             
 
             Bundle onCategoryMenu = new Bundle("~/scripts/Custom/OnCategoryMenu");

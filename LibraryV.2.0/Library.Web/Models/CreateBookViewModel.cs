@@ -30,6 +30,7 @@ namespace Library.Web.Models
         public string CoverLink { get; set; }
         public string Description { get; set; }
 
+        [Display(Name = "Authors")]
         public IList<SelectListItem> SelectListAuthors { get; set; }
 
         [Required]

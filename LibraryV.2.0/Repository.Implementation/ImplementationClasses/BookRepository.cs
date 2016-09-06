@@ -24,9 +24,16 @@ namespace Repository.Implementation.ImplementationClasses
         public void AddNewBook(Book book)
         {
             using (ITransaction transaction = _session.BeginTransaction())
-            {  
-                _session.SaveOrUpdate(book);
-                transaction.Commit();
+            {
+                try
+                {
+                    _session.SaveOrUpdate(book);
+                    transaction.Commit();
+                }
+                catch (System.Exception)
+                {
+                    transaction.Rollback();
+                }
             }
         }
 
