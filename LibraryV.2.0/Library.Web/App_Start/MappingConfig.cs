@@ -10,12 +10,14 @@ namespace Library.Web.App_Start
         {
             AutoMapper.Mapper.Initialize(config =>
             {
-                config.CreateMap<Book, BookDetailsViewModel>();
-                config.CreateMap<BookDetailsViewModel, Book>();
+                
+                //config.CreateMap<BookViewModel, Book>();
                 config.CreateMap<BookCategory, BookCategoryViewModel>();
                 config.CreateMap<Author, AuthorViewModel>();
                 config.CreateMap<CategoryDto, BookCategoryViewModel>();
                 config.CreateMap<User, LogOnViewModel>();
+                config.CreateMap<Book, BookViewModel>();
+                ;
             });
         }
     }

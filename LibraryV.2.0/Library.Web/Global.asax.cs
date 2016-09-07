@@ -18,8 +18,9 @@ namespace Library.Web
             NHibernateProfiler.Initialize();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new HandleAllErrorAttribute());
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
             //BundleTable.EnableOptimizations = true;
 
             var container = new WindsorContainer().Install(FromAssembly.This());

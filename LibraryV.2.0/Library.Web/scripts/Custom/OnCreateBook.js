@@ -6,11 +6,13 @@
 
 
     $(createProductLinkSelector).click(function () {
-        $.get("http://localhost/Library.Web/Book/Create",
-            function (data) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/Library.Web/Book/Create",
+            success:  function (data) {
                 var popup = $(dlgCreateProductSelector);
                 popup.html(data);
-
+                //AJAX request
                 popup.dialog(
                 {
                     title: "Create Product",
@@ -24,13 +26,13 @@
                         }
                     }
                 });
-
-                popup.dialog('open');
+                popup.dialog("open");
                 CallDatePicker();
-               
-            });
-
-          
+            },
+            error: function (data) {
+                alert(data)
+            }
+        });
     });
 
     function IsValidForm(formSelector, context) {
@@ -53,12 +55,13 @@
                 data: createProductForm.serialize(),
                 success: function (data) {
                     location.reload();
-                }
+                },
+                 //function (data) {
+                 //   debugger};
+                
             });
         } else {
             return false;
         }
-    }
-
-    
+    }       
 });

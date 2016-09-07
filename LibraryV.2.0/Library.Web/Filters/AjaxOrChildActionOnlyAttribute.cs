@@ -14,7 +14,8 @@ namespace Library.Web.Filters
                 throw new ArgumentNullException("filterContext");
             if (!((filterContext.HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest") ||
                (filterContext.IsChildAction)))
-                filterContext.Result = new HttpNotFoundResult();
+                //filterContext.Result = new HttpNotFoundResult();
+                throw new AccessViolationException("Access denied!");
         }
 
         #endregion

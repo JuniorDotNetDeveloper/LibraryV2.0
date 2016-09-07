@@ -1,16 +1,15 @@
 ﻿@model Library.Web.Models.BookViewModel
 
-
-<h2>Create new Book</h2>
-
-@using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @id = "createBookForm" }))
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { id = "editBookForm" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -18,37 +17,36 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PublicationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PublicationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PublicationDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.SelectListAuthors, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SelectedAuthor, Model.SelectListAuthors, new { @class = "form-control", @multiple = "multiple" } )
+                @Html.DropDownListFor(model => model.SelectedAuthor, Model.SelectListAuthors, new { @class = "form-control", @multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.SelectedAuthor, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            
-            @Html.LabelFor(model => model.PublicationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
 
-                @Html.EditorFor(model => model.PublicationDate, new { htmlAttributes = new { @id = "dateselection", @class = "form-control", @type ="text" } })
-                @Html.ValidationMessageFor(model => model.PublicationDate, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CoverLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CoverLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CoverLink, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.SelectItemListCategories, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SelectedCategory, Model.SelectItemListCategories,  new { @class = "form-control" } )
+                @Html.DropDownListFor(model => model.SelectedCategory, Model.SelectItemListCategories, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SelectedCategory, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CoverLink, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.EditorFor(model => model.CoverLink, new { htmlAttributes = new { @class = "form-control" } })
-                @*<label class="btn btn-default btn-file">
-                    Browse <input id="CoverLink" type="file" style="display: none;">
-                </label>*@
-                @Html.ValidationMessageFor(model => model.CoverLink, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -60,6 +58,10 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>*@
     </div>
-    
 }

@@ -29,9 +29,15 @@ namespace Library.Web.App_Start
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.min.css");
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.structure.css");
 
-            stylesJqueryUI.Include("~/Content/themes/base/button.css");
-            stylesJqueryUI.Include("~/Content/themes/base/all.css");
-            stylesJqueryUI.Include("~/Content/themes/base/dialog.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/button.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/base.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/theme.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/core.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/dialog.css");
+
+            //stylesJqueryUI.Include("~/Content/themes/base/button.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/all.css");
+            //stylesJqueryUI.Include("~/Content/themes/base/dialog.css");
 
             stylesJqueryUI.Include("~/Content/themes/base/jquery-ui.theme.css");
             bundles.Add(stylesJqueryUI);
@@ -43,9 +49,12 @@ namespace Library.Web.App_Start
             bundles.Add(onCreateBook);
 
             Bundle OnDeleteItem = new Bundle("~/scripts/Custom/OnDelete");
-            onCreateBook.Include("~/scripts/Custom/OnDeleteItem.js");
+            OnDeleteItem.Include("~/scripts/Custom/OnDeleteItem.js");
             bundles.Add(OnDeleteItem);
-            
+
+            Bundle OnEditItem = new Bundle("~/scripts/Custom/OnEdit");
+            OnEditItem.Include("~/scripts/Custom/OnEditItem.js");
+            bundles.Add(OnEditItem);
 
             Bundle onCategoryMenu = new Bundle("~/scripts/Custom/OnCategoryMenu");
             onCategoryMenu.Include("~/scripts/Custom/OnCategoryMenu.js");

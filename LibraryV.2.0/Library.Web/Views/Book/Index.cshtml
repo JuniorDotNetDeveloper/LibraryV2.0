@@ -1,5 +1,5 @@
 ﻿@using Library.Web.Models;
-@model IEnumerable<BookDetailsViewModel>
+@model IEnumerable<BookViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -55,7 +55,8 @@
                 @Html.ActionLink("Claim", "Claim", new { id = item.Id }) |
                 @Html.ActionLink("Rating", "Rating", new { id = item.Id }) |
                 @Html.ActionLink("Comment", "Comment", new { id = item.Id }) |
-                <a id="@item.Id" class="cursor-pointer" onclick="DeleteItem(this)">Delete</a>
+                <a id="edit@(item.Id)" class="cursor-pointer" onclick="EditItem(this)" itemid="@item.Id">Edit</a>
+                <a id="delete@(item.Id)" class="cursor-pointer" onclick="DeleteItem(this)" itemid="@item.Id">Delete</a>
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
 
             </div>
@@ -67,6 +68,8 @@
 <div id="popupContainer">
     <div id="dlgCreateBook" class="no-scrollbar"></div>
     <div id="dlgDeleteBook" class="no-scrollbar"></div>
+    <div id="dlgEditBook" class="no-scrollbar"></div>
+
 </div>
 @section Create {
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnCreate")"></script>
@@ -74,4 +77,6 @@
 @section Delete {
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnDelete")"></script>    
 }
-
+@section Edit {
+    <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnEdit")"></script>
+}

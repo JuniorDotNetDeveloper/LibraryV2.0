@@ -24,7 +24,7 @@ namespace Library.Web.Controllers
         public ViewResult Index()
         {
             IList<Book> bookDetails = _bookRepository.GetAllBooks();
-            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
+            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookViewModel>>(bookDetails);
             return View(bookDetailsViewModel);
         }
         public PartialViewResult Category()
@@ -36,13 +36,13 @@ namespace Library.Web.Controllers
         public PartialViewResult ConcreteCategory(string category)
         {
             IList<Book> result = _bookRepository.GetAllBooksBycategoryName(category);
-            var categoriedBooks = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(result); 
+            var categoriedBooks = AutoMapper.Mapper.Map<IList<Book>, IList<BookViewModel>>(result); 
             return PartialView("BookListPartial", categoriedBooks);
         }
         public PartialViewResult AllCategories()
         {
             IList<Book> bookDetails = _bookRepository.GetAllBooks();
-            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
+            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookViewModel>>(bookDetails);
             return PartialView("BookListPartial", bookDetailsViewModel);
         }
 

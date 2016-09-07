@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Library.Web.Models
 {
-    public class CreateBookViewModel
+    public class BookViewModel
     {
         public long Id { get; set; }
 
@@ -14,13 +14,16 @@ namespace Library.Web.Models
         public string Name { get;  set; }
 
         [Required]
-        [DataType(DataType.Date)]
+        [DataType("{0:dd - MM - yyyy}")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; set; }
         
         [Display(Name = "Category")]
         public IList<SelectListItem> SelectItemListCategories { get; set; }
+
+        [Display(Name = "Rating")]
+        public int? Rating { get; set; }
 
         [Required]
         public long SelectedCategory { get; set; }
@@ -35,12 +38,12 @@ namespace Library.Web.Models
 
         [Required]
         public IList<long> SelectedAuthor { get; set; }
-        public IList<AuthorViewModel> Authors { get; set; }
+        //public IList<AuthorViewModel> Authors { get; set; }
 
         [Obsolete]
-        public CreateBookViewModel() {}
+        public BookViewModel() {}
 
-        public CreateBookViewModel(IList<SelectListItem> authors, IList<SelectListItem> categories)
+        public BookViewModel(IList<SelectListItem> authors, IList<SelectListItem> categories)
         {
             if (authors == null)
                 throw new ArgumentNullException($"{nameof(authors)} is null");

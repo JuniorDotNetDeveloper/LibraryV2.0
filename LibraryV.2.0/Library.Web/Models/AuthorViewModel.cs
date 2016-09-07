@@ -6,6 +6,6 @@ namespace Library.Web.Models
     {
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
-        public IList<BookDetailsViewModel> PersonalBooks { get; } = new List<BookDetailsViewModel>();
+        //public IList<BookViewModel> PersonalBooks { get; } = new List<BookViewModel>();
     }
 }

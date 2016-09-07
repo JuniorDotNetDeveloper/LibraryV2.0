@@ -1,12 +1,12 @@
 ﻿
-function DeleteItem(obj) {
+function EditItem(obj) {
     var currentBook = obj;
     $.ajax({
-        url: "http://localhost/Library.Web/Book/Delete",
+        url: "http://localhost/Library.Web/Book/Edit",
         type: "get", //send it through get method
         data: { id: $(currentBook).attr("itemid") },
         success: function (response) {
-            dialogPopup(response)
+            editdialogPopup(response)
         },
 
         error: function (xhr) {
@@ -14,21 +14,19 @@ function DeleteItem(obj) {
         }
     });
 }
-        
 
-
-function dialogPopup(data) {
-    var popup = $("#dlgDeleteBook");
+function editdialogPopup(data) {
+    var popup = $("#dlgEditBook");
     popup.html(data);
-        
+
     popup.dialog(
     {
-        title: "Delete Product",
+        title: "Edit Product",
         autoOpen: false,
-        modal: true,
+        modal: true,    
         width: 500,
         buttons: {
-            "Delete": Delete,
+            "Edit": Edit,
             Cancel: function () {
                 popup.dialog("close");
             }
@@ -38,12 +36,13 @@ function dialogPopup(data) {
     CallDatePicker();
 }
 
-function Delete() {
-    var id = $("#bookId");
+function Edit() {
+    var id = $("#editBookForm");
+
     $.ajax({
-        url: "http://localhost/Library.Web/Book/ConfirmDelete",
+        url: "http://localhost/Library.Web/Book/Edit",
         type: "post", //send it through get method
-        data: { id: id.attr("value") },
+        data: id.serialize(),
         success: function (response) {
             location.reload()
         },

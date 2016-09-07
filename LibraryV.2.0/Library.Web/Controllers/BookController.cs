@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace Library.Web.Controllers
 {
-    //[Authorize]
     public class BookController : Controller
     {
         private IBookRepository _bookRepository;
@@ -21,13 +20,15 @@ namespace Library.Web.Controllers
             _bookRepository = bookRepository;
             _bookCategoryRepository = bookCategoryRepository;
         }
-    
+
         // GET: Book
         public ViewResult Index()
         {
+            throw new System.Exception("test");
             IList<Book> bookDetails = _bookRepository.GetAllBooks();
-            var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookDetailsViewModel>>(bookDetails);
-            return View(bookDetailsViewModel); 
+            //var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookViewModel>>(bookDetails);
+            var bookDetailsViewModel = bookDetails.Select(x => AutoMapper.Mapper.Map<Book, BookViewModel>(x));
+            return View(bookDetailsViewModel);
         }
 
         // GET: Book/Details/5
@@ -37,38 +38,18 @@ namespace Library.Web.Controllers
         }
 
         // GET: Book/Create
-        
         [AjaxOrChildActionOnly]
         public PartialViewResult Create()
         {
-            
-            IList<SelectListItem> selectedListCategories = new List<SelectListItem>();
-            var categories = _bookCategoryRepository.GetAllCategories();
-            //var a = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categories);
-            foreach (var cat in categories)
-            {
-                selectedListCategories.Add(new SelectListItem { Text = cat.CategoryName, Value = cat.Id.ToString() });
-            }
-            //var d = categories.Select((t, v) => new  SelectListItem { Text = t.CategoryName, Value = v });
-
-            IList<SelectListItem> selectedListAuthors = new List<SelectListItem>();
-            var authors = _authorRepository.Collection;
-            foreach (var author in authors)
-            {
-                selectedListAuthors.Add(new SelectListItem { Text = author.FullName, Value = author.Id.ToString() });
-            }
-            CreateBookViewModel newbook = new CreateBookViewModel(selectedListAuthors, selectedListCategories);
-            
+            BookViewModel newbook = new BookViewModel(GetAuthorItemList(null), GetCategoryList(null));
             return PartialView("CreateBookPartial", newbook);
         }
 
         // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AjaxOrChildActionOnly]
-        public ActionResult Create(CreateBookViewModel newBook)
+        public ActionResult Create(BookViewModel newBook)
         {
-
             var categories = _bookCategoryRepository.GetById(newBook.SelectedCategory);
             var authors = _authorRepository.Collection.Where(x => newBook.SelectedAuthor.Contains<long>(x.Id)).ToList();
             if (!ModelState.IsValid)
@@ -82,27 +63,27 @@ namespace Library.Web.Controllers
 
         // GET: Book/Edit/5
         [AjaxOrChildActionOnly]
-        [ValidateAntiForgeryToken]
-        public ViewResult Edit(int id)
+        public PartialViewResult Edit(long id)
         {
-            return View();
+            var book = _bookRepository.GetById(id);
+            var viewModelbook = AutoMapper.Mapper.Map<Book, BookViewModel>(book);
+            viewModelbook.SelectListAuthors = GetAuthorItemList(null);
+            viewModelbook.SelectItemListCategories = GetCategoryList(book.Category.Id);
+            return PartialView(viewModelbook);
         }
 
         // POST: Book/Edit/5
         [HttpPost]
-        [AjaxOrChildActionOnly]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(BookViewModel collection)
         {
-            try
-            {
-                // TODO: Add update logic here
+            // !configure automapper for Book class!
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (_bookRepository.GetById(collection.Id) != null)
             {
-                return View();
+                var editBook = AutoMapper.Mapper.Map<BookViewModel, Book>(collection);
+                _bookRepository.Update(editBook);
             }
+            return RedirectToAction("Index");
         }
 
         // GET: Book/Delete/5
@@ -110,7 +91,7 @@ namespace Library.Web.Controllers
         public PartialViewResult Delete(long id)
         {
             var bookDomain = _bookRepository.GetById(id);
-            var bookViewModel = AutoMapper.Mapper.Map<Book, BookDetailsViewModel>(bookDomain);
+            var bookViewModel = AutoMapper.Mapper.Map<Book, BookViewModel>(bookDomain);
             return PartialView(bookViewModel);
         }
 
@@ -130,6 +111,44 @@ namespace Library.Web.Controllers
             {
                 return View();
             }
+        }
+
+        [NonAction]
+        private IList<SelectListItem> GetCategoryList(long? id)
+        {
+
+            IList<SelectListItem> selectedListCategories = _bookCategoryRepository.GetAllCategories().Select(x => new SelectListItem
+            {
+                Text = x.CategoryName,
+                Value = x.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
+            if (id != null)
+            {
+                var selectedIndex = selectedListCategories.IndexOf(selectedListCategories.Where(x => x.Value == id.ToString()).First());
+                selectedListCategories[selectedIndex].Selected = true;
+            }
+
+            return selectedListCategories;
+        }
+
+
+        //var a = AutoMapper.Mapper.Map<IList<CategoryDto>, IList<BookCategoryViewModel>>(categories);
+
+        //var d = categories.Select((t, v) => new  SelectListItem { Text = t.CategoryName, Value = v });
+        [NonAction]
+        private IList<SelectListItem> GetAuthorItemList(long? id)
+        {
+            IList<SelectListItem> selectedListAuthors = _authorRepository.Collection.Select(x => new SelectListItem
+            {
+                Text = x.FullName,
+                Value = x.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
+            if (id != null)
+            {
+                var selectedIndex = selectedListAuthors.IndexOf(selectedListAuthors.Where(x => x.Value == id.ToString()).First());
+                selectedListAuthors[selectedIndex].Selected = true;
+            }
+            return selectedListAuthors;
         }
     }
 }

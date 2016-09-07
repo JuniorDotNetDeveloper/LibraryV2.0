@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Library.Web.Models
 {
-    public class BookDetailsViewModel
+    public class BookViewModel2
     {
         public long Id { get; set; }
 
