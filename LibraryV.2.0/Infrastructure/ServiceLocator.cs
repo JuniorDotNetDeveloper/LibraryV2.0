@@ -16,7 +16,7 @@ namespace Infrastructure
         public static void RegisterAll()
         {
             
-            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerThread());
+            _kernel.Register(Component.For<ISessionProvider>().ImplementedBy<SessionProvider>().LifestylePerWebRequest());
 
             var interfaces = Assembly.Load(typeof(IRoleRepository).Assembly.FullName).GetTypes().Where(type => type.IsInterface && type.IsPublic).ToList();
 

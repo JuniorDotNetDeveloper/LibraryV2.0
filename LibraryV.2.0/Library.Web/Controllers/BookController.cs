@@ -24,7 +24,8 @@ namespace Library.Web.Controllers
         // GET: Book
         public ViewResult Index()
         {
-            throw new System.Exception("test");
+            //throw new System.Exception("test");
+
             IList<Book> bookDetails = _bookRepository.GetAllBooks();
             //var bookDetailsViewModel = AutoMapper.Mapper.Map<IList<Book>, IList<BookViewModel>>(bookDetails);
             var bookDetailsViewModel = bookDetails.Select(x => AutoMapper.Mapper.Map<Book, BookViewModel>(x));
@@ -66,9 +67,11 @@ namespace Library.Web.Controllers
         public PartialViewResult Edit(long id)
         {
             var book = _bookRepository.GetById(id);
+            //var authors = book.Authors.Select(x=>x.Author.Id);
             var viewModelbook = AutoMapper.Mapper.Map<Book, BookViewModel>(book);
             viewModelbook.SelectListAuthors = GetAuthorItemList(null);
             viewModelbook.SelectItemListCategories = GetCategoryList(book.Category.Id);
+            //viewModelbook.SelectedAuthor = (IList<long>)authors;
             return PartialView(viewModelbook);
         }
 
@@ -76,11 +79,10 @@ namespace Library.Web.Controllers
         [HttpPost]
         public ActionResult Edit(BookViewModel collection)
         {
-            // !configure automapper for Book class!
-
+            var authors = _authorRepository.Collection.Where(x => collection.SelectedAuthor.Contains<long>(x.Id)).ToList();
             if (_bookRepository.GetById(collection.Id) != null)
             {
-                var editBook = AutoMapper.Mapper.Map<BookViewModel, Book>(collection);
+                var editBook = collection.CustToBook(authors);
                 _bookRepository.Update(editBook);
             }
             return RedirectToAction("Index");

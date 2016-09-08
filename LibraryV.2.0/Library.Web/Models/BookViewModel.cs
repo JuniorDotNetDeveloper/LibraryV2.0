@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
@@ -31,6 +32,8 @@ namespace Library.Web.Models
 
         [DataType(DataType.Upload)]
         public string CoverLink { get; set; }
+
+        [StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
         public string Description { get; set; }
 
         [Display(Name = "Authors")]
@@ -57,6 +60,12 @@ namespace Library.Web.Models
             if (categories == null)
                 throw new ArgumentNullException($"{nameof(categories)} is null");
             SelectItemListCategories = categories;
+        }
+
+        public Book CustToBook(IList<Author> authors)
+        {
+            Book domainBook = new Book(Name, PublicationDate, new BookCategory(Category.CategoryName), authors, CoverLink, Description);
+            return domainBook;
         }
     }
 }

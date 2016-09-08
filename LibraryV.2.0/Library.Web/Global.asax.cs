@@ -5,6 +5,7 @@ using Infrastructure;
 using Library.Web.App_Start;
 using Library.Web.Filters;
 using Library.Web.WindsorUtills;
+using NLog;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -26,7 +27,7 @@ namespace Library.Web
             var container = new WindsorContainer().Install(FromAssembly.This());
             ServiceLocator.RegisterAll(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
-            MappingConfig.RegisterMaps();
+            MappingConfig.RegisterMaps(); 
         }
     }
 }

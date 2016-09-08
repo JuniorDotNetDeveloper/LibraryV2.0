@@ -6,8 +6,9 @@ using System.Web.Mvc;
 namespace Library.Web.Filters
 {
     public class HandleAllErrorAttribute : HandleErrorAttribute
-
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public override void OnException(ExceptionContext filterContext)
         {
             //filterContext.ExceptionHandled = true;
@@ -30,9 +31,8 @@ namespace Library.Web.Filters
             // want it to try to render ASP.NET MVC's error page instead.
             filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
 
-        }
 
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        }
         protected HandleErrorInfo SetErrorResultView(ExceptionContext filterContext,
        Exception exception)
         {
@@ -52,7 +52,7 @@ namespace Library.Web.Filters
             filterContext.HttpContext.Response.StatusCode = new HttpException(null, exception).GetHttpCode();
 
             logger.Error(exception);
-
+            //logger.Log(LogLevel.Info, "Sample informational message");
             return model;
         }
     }
