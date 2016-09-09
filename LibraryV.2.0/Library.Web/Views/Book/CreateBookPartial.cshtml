@@ -25,15 +25,9 @@
                 @Html.ValidationMessageFor(model => model.SelectedAuthor, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            
-            @Html.LabelFor(model => model.PublicationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
 
-                @Html.EditorFor(model => model.PublicationDate, new { htmlAttributes = new { @id = "dateselection", @class = "form-control", @type ="text" } })
-                @Html.ValidationMessageFor(model => model.PublicationDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.EditorFor(model => model.PublicationDate)
+
         <div class="form-group">
             @Html.LabelFor(model => model.SelectItemListCategories, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -61,5 +55,6 @@
         </div>
 
     </div>
+
     
 }

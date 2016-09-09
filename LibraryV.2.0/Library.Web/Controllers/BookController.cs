@@ -58,7 +58,7 @@ namespace Library.Web.Controllers
 
             var cat = _bookCategoryRepository.Collection.Single(x => x.Id == newBook.SelectedCategory);
 
-            _bookRepository.AddNewBook(new Book(newBook.Name, newBook.PublicationDate, cat, authors));
+            _bookRepository.AddNewBook(new Book(newBook.Name, newBook.PublicationDate, cat, authors, newBook.CoverLink, newBook.Description));
             return RedirectToAction("Index");
         }
 

@@ -1,5 +1,5 @@
 ﻿function CallDatePicker() {
-    $("#dateselection").datepicker({
+    $(".dateselection").datepicker({
         numberOfMonths: 1,
         showWeek: true,
         changeMonth: true,
@@ -8,5 +8,5 @@
         minDate: new Date(2008, 1 - 1, 1),
         maxDate: new Date(2100, 12 - 1, 31)
     });
-    $("#dateselection").datepicker("setDate", new Date());
+    $(".dateselection").datepicker("setDate", new Date());
 }

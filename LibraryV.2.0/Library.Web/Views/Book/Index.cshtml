@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -71,12 +71,11 @@
     <div id="dlgEditBook" class="no-scrollbar"></div>
 
 </div>
-@section Create {
+
+@section Scripts
+{
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnCreate")"></script>
-}
-@section Delete {
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnDelete")"></script>    
-}
-@section Edit {
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/scripts/Custom/OnEdit")"></script>
 }
+

@@ -33,7 +33,7 @@ namespace Domain.Model.Models
             Category = category;
             Name = bookName;
             PublicationDate = publicationDate;
-            CoverLink = coverLink;
+            CoverLink = coverLink ?? @"~/Img/Book/defaultBook.jpg";
         }
 
         private void ValidateInput( string bookName, DateTime publicationDate, BookCategory category, string description, IList<Author> authors = null)

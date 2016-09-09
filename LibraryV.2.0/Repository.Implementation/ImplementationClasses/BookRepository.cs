@@ -72,7 +72,7 @@ namespace Repository.Implementation.ImplementationClasses
         }
         public IList<Book> GetAllGroupedBookByCategoryName(string category)
         {
-            GroupedByCategoriesBooksDto output = null;
+            //GroupedByCategoriesBooksDto output = null;
             Book b = null;
             BookCategory bookCategory = null;
             

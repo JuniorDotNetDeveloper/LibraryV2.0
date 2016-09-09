@@ -8,7 +8,7 @@
     <link href="@BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/jquery-ui-styles")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color: black !important">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Amdaris Library", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Book", "Index", "Book", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,6 +41,11 @@
     </div>
     
     <script src="@BundleTable.Bundles.ResolveBundleUrl("~/bundles/jquery")"></script>
+
+    @*@RenderSection("Create", required: false);
+    @RenderSection("Delete", required: false);
+    @RenderSection("CategoryMenu", required: false);
+    @RenderSection("Edit", required: false)*@
     
     @RenderSection("Scripts", required: false)
     

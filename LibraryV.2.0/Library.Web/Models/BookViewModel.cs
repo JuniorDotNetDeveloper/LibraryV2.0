@@ -15,8 +15,9 @@ namespace Library.Web.Models
         public string Name { get;  set; }
 
         [Required]
+        [UIHint("DateTime")]
         [DataType("{0:dd - MM - yyyy}")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; set; }
         
